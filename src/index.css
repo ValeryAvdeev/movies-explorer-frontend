@@ -1,0 +1,126 @@
+/*
+vendor
+*/
+@import url(./vendor/normalize.css);
+/*
+app
+ */
+@import url(./components/App/App.css);
+/*
+main
+ */
+@import url(./components/Main/Main.css);
+/*
+main
+aboutme
+ */
+@import url(./components/Main/AboutMe/AboutMe.css);
+/*
+main
+aboutproject
+ */
+@import url(./components/Main/AboutProject/AboutProject.css);
+/*
+main
+navtab
+ */
+@import url(./components/Main/NavTab/NavTab.css);
+/*
+main
+portfolio
+ */
+@import url(./components/Main/Portfolio/Portfolio.css);
+/*
+main
+promo
+ */
+@import url(./components/Main/Promo/Promo.css);
+/*
+main
+techs
+ */
+@import url(./components/Main/Techs/Techs.css);
+
+
+/*
+header
+ */
+@import url(./components/Header/Header.css);
+
+
+/*
+login
+ */
+@import url(./components/Login/Login.css);
+
+
+/*
+register
+ */
+@import url(./components/Register/Register.css);
+
+
+/*
+profile
+ */
+@import url(./components/Profile/Profile.css);
+
+
+/*
+movies
+ */
+@import url(./components/Movies/Movies.css);
+/*
+movies
+moviescard
+ */
+@import url(./components/Movies/MoviesCard/MoviesCard.css);
+/*
+movies
+preloader
+ */
+@import url(./components/Movies/Preloader/Preloader.css);
+/*
+movies
+searchform
+ */
+@import url(./components/Movies/SearchForm/SearchForm.css);
+/*
+movies
+moviescardlist
+ */
+@import url(./components/Movies/MoviesCardList/MoviesCardList.css);
+
+
+/*
+navigation
+ */
+@import url(./components/Navigation/Navigation.css);
+
+
+/*
+profile
+ */
+@import url(./components/Profile/Profile.css);
+
+
+/*
+savedmovies
+ */
+@import url(./components/SavedMovies/SavedMovies.css);
+/*
+savedmovies
+moviescard
+ */
+@import url(./components/SavedMovies/MoviesCard/MoviesCard.css);
+/*
+savedmovies
+moliescardlist
+ */
+@import url(./components/SavedMovies/MoviesCardList/MoviesCardList.css);
+
+
+/*
+footer
+ */
+@import url(./components/Footer/Footer.css);
