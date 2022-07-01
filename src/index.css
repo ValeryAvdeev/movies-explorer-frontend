@@ -121,6 +121,12 @@ moliescardlist
 
 
 /*
+NotFoundPage
+ */
+@import url(./components/NotFoundPage/NotFoundPage.css);
+
+
+/*
 footer
  */
 @import url(./components/Footer/Footer.css);
