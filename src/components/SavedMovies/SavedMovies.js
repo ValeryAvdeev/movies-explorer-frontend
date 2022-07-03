@@ -1,3 +1,5 @@
-function SavedMovies() {}
+function SavedMovies() {
+
+}
 
 export default SavedMovies;

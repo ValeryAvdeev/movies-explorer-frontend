@@ -9,14 +9,14 @@ function Header(props) {
       <img src={logo} alt="логотип" className='header__logo'/>
       <div className="header__links">
         <Link to='/signup' className='header__link'>
-          <p className="header__link-reg">зугистрация</p>
+          <p className="header__link-text">Регистрация</p>
         </Link>
         <Link
           to='/signin'
           className='header__link'
           type='button'
           onClick={props.onClick}
-        ></Link>
+        ><button className="header__button">Войти</button></Link>
       </div>
     </header>
   )

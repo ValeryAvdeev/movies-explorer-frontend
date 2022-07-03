@@ -1,6 +1,6 @@
 import './App.css';
 import Header from "../Header/Header";
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -11,7 +11,6 @@ import Register from "../Register/Register";
 function App() {
   return (
     <div className="App">
-
       <Routes>
         <Route path='/' element={
           <>
