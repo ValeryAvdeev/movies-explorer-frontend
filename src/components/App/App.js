@@ -11,29 +11,31 @@ import Register from "../Register/Register";
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path='/' element={
-          <>
-            <Header />
-            <Main/>
-          </>
-        }/>
-        <Route path='/movies' element={
-          <Movies/>
-        }/>
-        <Route path='/saved-movies' element={
-          <SavedMovies/>
-        }/>
-        <Route path='/profile' element={
-          <Portfolio/>
-        }/>
-        <Route path='/signin' element={
-          <Login/>
-        }/>
-        <Route path='/signup' element={
-          <Register/>
-        }/>
-      </Routes>
+      <div className='App__content' Ю>
+        <Routes>
+          <Route path='/' element={
+            <>
+              <Header/>
+              <Main/>
+            </>
+          }/>
+          <Route path='/movies' element={
+            <Movies/>
+          }/>
+          <Route path='/saved-movies' element={
+            <SavedMovies/>
+          }/>
+          <Route path='/profile' element={
+            <Portfolio/>
+          }/>
+          <Route path='/signin' element={
+            <Login/>
+          }/>
+          <Route path='/signup' element={
+            <Register/>
+          }/>
+        </Routes>
+      </div>
     </div>
 
   );
