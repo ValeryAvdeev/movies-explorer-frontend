@@ -11,7 +11,7 @@ import Register from "../Register/Register";
 function App() {
   return (
     <div className="App">
-      <div className='App__content' Ю>
+      <div className='App__content'>
         <Routes>
           <Route path='/' element={
             <>

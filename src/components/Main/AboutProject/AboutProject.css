@@ -5,14 +5,15 @@
   max-width: 1140px;
 }
 
-.aboutProject__title {
+
+.section__title {
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
   color: #FFFFFF;
-  border-bottom: 1px solid rgba(84, 84, 84, .7);
+  border-bottom: 1px solid #DADADA;
   padding: 110px 0 23px;
   margin: 0;
 }
@@ -114,7 +115,7 @@
     max-width: 319px;
   }
 
-  .aboutProject__title {
+  .section__title {
     padding-top: 90px;
   }
 
@@ -138,7 +139,7 @@
     max-width: 319px;
   }
 
-  .aboutProject__title {
+  .section__title {
     padding-top: 90px;
   }
 
@@ -193,7 +194,7 @@
     max-width: 284px;
   }
 
-  .aboutProject__title {
+  .section__title {
     padding: 70px 0 28px;
     font-size: 18px;
     line-height: 22px;
