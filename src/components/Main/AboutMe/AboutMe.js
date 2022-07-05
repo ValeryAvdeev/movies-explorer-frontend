@@ -15,8 +15,8 @@ function AboutMe() {
             хочу дальше развиваться и расти по этой профессии.
           </p>
           <div className="about-me__media">
-            <a href="https://vk.com/id698958306" className="about-me__link">VK</a>
-            <a href="https://github.com/ValeryAvdeev" className="about-me__link">Github</a>
+            <a href="https://vk.com/id698958306" target="_blank" className="about-me__link">VK</a>
+            <a href="https://github.com/ValeryAvdeev" target="_blank" className="about-me__link">Github</a>
           </div>
         </div>
         <img src={Valery} alt="моя фотография" className='about-me__foto'/>

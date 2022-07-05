@@ -1,6 +1,6 @@
 .about-me {
   margin: 0 auto;
-  max-width: 1140px;
+  width: 89%;
 }
 
 .about-me__info {
@@ -21,6 +21,7 @@
   line-height: 58px;
   letter-spacing: -0.04em;
   color: #FFFFFF;
+  margin: 0;
 }
 
 .about-me__profession {
@@ -31,6 +32,7 @@
   line-height: 20px;
   color: #FFFFFF;
   mix-blend-mode: normal;
+  margin-top: 18px;
 }
 
 .abuot-me__biography {
@@ -42,17 +44,23 @@
   color: #FFFFFF;
   mix-blend-mode: normal;
   max-width: 600px;
+  margin-top: 26px;
 }
 
 .about-me__foto {
   width: 270px;
   height: 327px;
   grid-column: 2;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .about-me__media {
   display: flex;
   flex-direction: row;
+  margin-top: 99px;
+  max-width: 98px;
+  justify-content: space-between;
 }
 
 .about-me__link {
@@ -62,4 +70,90 @@
   font-size: 14px;
   line-height: 17px;
   color: #FFFFFF;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
+
+.about-me__link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    width: 87%;
+  }
+
+  .about-me__info {
+    grid-template-columns: 1fr 255px;
+    margin-bottom: 90px;
+  }
+
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-me__profession {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 16px;
+  }
+
+  .abuot-me__biography {
+    font-size: 12px;
+    line-height: 18px;
+    max-width: 400px;
+    margin-top: 20px;
+  }
+
+  .about-me__foto {
+    width: 255px;
+  }
+
+  .about-me__media {
+    margin-top: 87px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-me {
+    width: 91%;
+  }
+
+  .about-me__info {
+    margin: 60px auto 70px;
+    grid-template-columns: 1fr;
+
+  }
+
+  .about-me__foto {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0 auto;
+    width: 292px;
+  }
+
+  .about-me__name {
+    margin-top: 40px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .about-me__profession {
+    margin-top: 20px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .abuot-me__biography {
+    margin-top: 20px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__media {
+    margin-top: 40px;
+  }
+}
+
