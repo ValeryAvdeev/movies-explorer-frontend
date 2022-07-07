@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 function Header(props) {
   return (
     <header className="header">
-      <img src={logo} alt="логотип" className='header__logo'/>
+      <img src={logo} alt="логотип" className='logo'/>
       <div className="header__links">
         <Link to='/signup' className='header__link'>
           <p className="header__link-text">Регистрация</p>
@@ -16,7 +16,9 @@ function Header(props) {
           className='header__link'
           type='button'
           onClick={props.onClick}
-        ><button className="header__button">Войти</button></Link>
+        >
+          <button className="header__button">Войти</button>
+        </Link>
       </div>
     </header>
   )

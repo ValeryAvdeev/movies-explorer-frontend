@@ -66,7 +66,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .footer {
     width: 94%;
   }
@@ -83,7 +83,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 300px;
+    max-width: 376px;
   }
 
   .footer__copyright {
