@@ -1,3 +1,5 @@
+import './MoviesCard.css';
+
 function MoviesCard() {
 
 }

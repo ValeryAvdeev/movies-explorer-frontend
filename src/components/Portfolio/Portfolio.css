@@ -40,7 +40,7 @@
 }
 
 .portfolio__link {
-  background-image: url("../../../images/link.svg");
+  background-image: url("../../images/link.svg");
   width: 21px;
   height: 29px;
   align-self: center;

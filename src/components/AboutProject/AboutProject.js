@@ -1,8 +1,8 @@
-// import './AboutProject.css'
+import './AboutProject.css'
 
 function AboutProject() {
   return (
-    <section className='aboutProject' id='about-project'>
+    <section className='aboutProject' id='aboutProject'>
       <h2 className='section__title'>О проекте</h2>
       <div className='aboutProject__description'>
         <div className='aboutProject__info'>

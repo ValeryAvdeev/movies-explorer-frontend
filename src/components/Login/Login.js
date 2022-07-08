@@ -1,3 +1,4 @@
+import './Login.css';
 import logo from "../../images/logo.svg";
 import {Link} from "react-router-dom";
 
@@ -41,7 +42,7 @@ function Login() {
       <div className='authentication__singnin'>
         <p className='authentication__subtitle'>
           Ещё не зарегистрированы?<Link
-          to='/signup'
+          to='/movies'
           className='authentication__login-link'
         >Регистрация</Link>
         </p>

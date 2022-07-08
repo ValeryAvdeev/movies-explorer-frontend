@@ -1,4 +1,5 @@
-import Valery from '../../../images/valery.jpg';
+import './AboutMe.css';
+import Valery from '../../images/valery.jpg';
 
 function AboutMe() {
   return (

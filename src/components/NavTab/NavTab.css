@@ -1,35 +1,47 @@
 .navTab {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   width: 308px;
   margin-bottom: 30px;
 }
 
-.navTab__link {
-  text-decoration: none;
+.navTab__links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.navTab__item {
   opacity: 1;
   transition: opacity 0.5s;
-}
-
-.navTab__link:hover {
-  opacity: 0.7;
-}
-
-.navTab__button {
-  font-family: "Inter", Arial, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: #FFFFFF;
   width: 96px;
   height: 36px;
   background-color: #303030;
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navTab__item:hover {
+  opacity: 0.7;
+}
+
+.navTab__link {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 450px) {
@@ -38,7 +50,7 @@
     margin-bottom: 17px;
   }
 
-  .navTab__button {
+  .navTab__item {
     font-size: 10px;
     width: 82px;
     height: 26px;

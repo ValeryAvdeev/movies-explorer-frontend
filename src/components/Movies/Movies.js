@@ -1,7 +1,12 @@
+import './Movies.css';
+import SearchForm from "../SearchForm/SearchForm";
+
 function Movies() {
   return (
     <div>
-      hi world
+      <SearchForm>
+
+      </SearchForm>
     </div>
   )
 }
