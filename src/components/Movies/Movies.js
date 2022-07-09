@@ -3,7 +3,7 @@ import SearchForm from "../SearchForm/SearchForm";
 
 function Movies() {
   return (
-    <div>
+    <div className='movies'>
       <SearchForm>
 
       </SearchForm>

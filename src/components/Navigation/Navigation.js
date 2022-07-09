@@ -17,7 +17,6 @@ function Navigation() {
         <Link
           to='/profile'
           className='navigation-header__link'
-          type='button'
         >
           <img src={iconAccount} alt="изображение аккаунта" className='navigation-header__icon'/>
           Аккаунт
