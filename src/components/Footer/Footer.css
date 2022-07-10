@@ -62,7 +62,15 @@
 
 @media screen and (max-width: 768px) {
   .footer {
-    width: 87%;
+    width: 92%;
+  }
+
+  .footer__info {
+    padding-bottom: 22px;
+  }
+
+  .footer__title {
+    margin: 75px 0 18px;
   }
 }
 

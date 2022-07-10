@@ -7,3 +7,19 @@
   width: 100%;
   justify-content: center;
 }
+
+@media screen and (max-width: 768px) {
+  .movies-list {
+    grid-template-columns: repeat(auto-fill, 341px);
+    gap: 22px 24px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .movies-list {
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-template-rows: 245px;
+    gap: 16px;
+    margin-top: 40px;
+  }
+}

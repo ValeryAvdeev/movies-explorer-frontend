@@ -18,7 +18,6 @@
 .movie__content {
   display: flex;
   flex-direction: column;
-
 }
 
 .movie__title {
@@ -35,7 +34,7 @@
   overflow: hidden;
 }
 
-.movie_timeng {
+.movie__timeng {
   font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -51,7 +50,7 @@
   background: url(../../images/save.svg) center no-repeat #313131;
   border: none;
   border-radius: 36px;
-  right: 8px;
+  right: 9px;
   top: 27px;
   position: absolute;
   margin-right: 5px;
@@ -62,4 +61,23 @@
 
 .movie__save:hover {
   opacity: 0.7;
+}
+
+@media screen and (max-width: 320px) {
+  .movie__title {
+    margin: 23px 0 0 14px;
+  }
+
+  .movie__timeng {
+    margin-top: 9px;
+  }
+
+  .movie__save {
+    top: 29px;
+  }
+
+  .movie__image {
+    width: 300px;
+    height: 168px;
+  }
 }
