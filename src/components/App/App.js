@@ -30,10 +30,18 @@ function App() {
             </>
           }/>
           <Route path='/saved-movies' element={
-            <SavedMovies/>
+            <>
+              <Navigation/>
+              <SavedMovies/>
+              <Footer/>
+            </>
           }/>
           <Route path='/profile' element={
-            <Profile/>
+            <>  
+              <Navigation/>
+              <Profile/>
+              <Footer/>
+            </>
           }/>
           <Route path='/signin' element={
             <Login/>
