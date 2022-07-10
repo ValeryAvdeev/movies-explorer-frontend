@@ -2,16 +2,18 @@
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  border-bottom: 1px solid #424242;
+  width: 100%;
 }
 
 .search__content {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 70px auto 80px;
-  width: 89%;
+  margin: 65px auto 70px;
+  width: 100%;
   background: #222222;
-  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
   border-radius: 9px;
 }
 
@@ -20,22 +22,25 @@
   align-items: center;
   border-right: 1px solid #505050;
   height: 40px;
-  margin:19px 29px 19px;
+  margin: 19px 29px 19px;
   padding-right: 19px;
+  width: 90vw;
+  justify-content: space-between;
 }
 
-.search__span {
-  color:#959595;
+.search__icon {
+  color: #959595;
   width: 22px;
   height: 22px;
 }
 
-.search__input {
-  background-color: #222222;
-  border: none;
-  margin: 0 0 0 19px;
-  height: 34px;
-}
+/*.search__input {*/
+/*  background-color: #222222;*/
+/*  border: none;*/
+/*  margin: 0 0 0 19px;*/
+/*  height: 34px;*/
+/*  !*border: 1px solid #3DDC84;*!*/
+/*}*/
 
 .search__button {
   background: url(../../images/icon_search.svg) no-repeat #4285F4 center;
@@ -43,7 +48,7 @@
   width: 80px;
   height: 34px;
   border: none;
-  /* margin: 19px 0 19px 0; */
+  /*margin: 19px 0 19px 10px;*/
 }
 
 .search__switch {
@@ -94,5 +99,43 @@
   font-size: 13px;
   line-height: 18px;
   color: #FFFFFF;
-  margin: 0 0 0 14px;
+  margin: 0 30px 0 14px;
 }
+
+
+.search__icon {
+  position: relative;
+}
+
+.search__icon::before {
+  content: '';
+  color: #8B8B8B;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search__icon .search__input {
+  padding-left: 36px;
+  background-color: #222222;
+  border: none;
+  color: #8B8B8B;
+  width: 27vw;
+}
+
+/* email значок */
+.search__icon_loupe::before {
+  content: url("../../images/icon_searchV2.svg");
+}
+
+/* иконка лупы */
+/*.text-field__icon_search::before {*/
+/*  width: 16px;*/
+/*  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23bdbdbd' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E");*/
+/*  background-repeat: no-repeat;*/
+/*  background-position: center;*/
+/*}*/

@@ -1,14 +1,14 @@
 import './App.css';
 import Header from "../Header/Header";
-import {Routes, Route, Navigate} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
-import Portfolio from "../Portfolio/Portfolio";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Footer from "../Footer/Footer";
 import Navigation from "../Navigation/Navigation";
+import Profile from "../Profile/Profile";
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
             <SavedMovies/>
           }/>
           <Route path='/profile' element={
-            <Portfolio/>
+            <Profile/>
           }/>
           <Route path='/signin' element={
             <Login/>

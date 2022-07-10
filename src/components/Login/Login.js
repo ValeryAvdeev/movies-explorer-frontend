@@ -35,14 +35,16 @@ function Login() {
           />
           <span className="authentication__error">Что-то пошло не так...</span>
         </label>
-        <button type="submit" className="authentication__button">
-          Войти
-        </button>
+        <Link to='/movies'>
+          <button type="submit" className="authentication__button">
+            Войти
+          </button>
+        </Link>
       </form>
       <div className='authentication__singnin'>
         <p className='authentication__subtitle'>
           Ещё не зарегистрированы?<Link
-          to='/movies'
+          to='/signup'
           className='authentication__login-link'
         >Регистрация</Link>
         </p>

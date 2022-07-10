@@ -1,19 +1,19 @@
 import './SearchForm.css';
-import icon from '../../images/icon_search.svg';
 
 function SearchFrom() {
   return (
     <div className='search'>
       <div className='search__content'>
         <form className='search__form'>
-          <img src={icon} alt='иконка поиска' className='search__span'/>
-          <input 
-            className='search__input'
-            placeholder='Фильм'
-            name='searchInput'
-            type='text'
-          />
-          <button 
+          <div className='search__icon search__icon_loupe'>
+            <input
+              className='search__input'
+              placeholder='Фильм'
+              name='searchInput'
+              type='text'
+            />
+          </div>
+          <button
             className='search__button'
             type='submit'
           />

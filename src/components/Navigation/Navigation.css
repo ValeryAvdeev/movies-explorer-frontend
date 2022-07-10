@@ -28,7 +28,7 @@
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
   color: #FFFFFF;
   margin: 0;
@@ -48,15 +48,15 @@
 .navigation-header__icon {
   width: 12px;
   height: 14px;
-  margin: 9px 7px 9px 12px;
+  margin: 9px 10px 9px 12px;
 }
 
 .navigation-header__link-text {
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 18px;
   color: #FFFFFF;
   margin: 0;
 }
