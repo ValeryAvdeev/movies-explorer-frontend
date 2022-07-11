@@ -54,14 +54,15 @@
   display: flex;
   flex-direction: row;
   margin: 110px 0;
+  width: 100%;
 }
 
 .aboutProject__backend {
-  width: 20vw;
+  width: 20%;
 }
 
 .aboutProject__frontend {
-  width: 80vw;
+  width: 80%;
 }
 
 .aboutProject__text-time {

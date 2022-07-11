@@ -1,7 +1,16 @@
 import './MoviesCard.css';
 import foto from '../../images/street.png';
+import {useState} from "react";
+import {useLocation} from "react-router-dom";
 
 function MoviesCard() {
+  const [saveButton, setSaveButton] = useState(false);
+  const location = useLocation();
+
+  function handleSaveToogle() {
+    setSaveButton(!saveButton)
+  }
+
   return (
     <div className="movie">
       <div className="movie__content">
@@ -11,7 +20,13 @@ function MoviesCard() {
         <p className="movie__timeng">1ч 47м</p>
         <button
           type="button"
-          className='movie__save'
+          className={
+            `movie__save movie__save${
+              location.pathname == '/saved-movies' ? '_delete' :
+                saveButton ? '_active' : '_disaible'
+            }`
+          }
+          onClick={handleSaveToogle}
         />
       </div>
       <img

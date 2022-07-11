@@ -1,6 +1,6 @@
 import './App.css';
 import Header from "../Header/Header";
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useLocation} from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -12,6 +12,10 @@ import Profile from "../Profile/Profile";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 function App() {
+  // const Location = useLocation();
+  //
+  // console.log(Location);
+
   return (
     <div className="App">
       <div className='App__content'>

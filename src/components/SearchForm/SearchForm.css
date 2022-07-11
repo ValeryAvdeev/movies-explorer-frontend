@@ -24,7 +24,7 @@
   height: 40px;
   margin: 19px 29px 19px;
   padding-right: 19px;
-  width: 90vw;
+  width: 90%;
   justify-content: space-between;
 }
 
@@ -126,7 +126,7 @@
   background-color: #222222;
   border: none;
   color: #8B8B8B;
-  width: 27vw;
+  width: 30vw;
 }
 
 /* email значок */
@@ -156,11 +156,12 @@
   }
 
   .search__icon .search__input {
+    width: 20vw;
     padding-left: 45px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 575px) {
   .search__content {
     flex-direction: column;
     background-color: #202020;

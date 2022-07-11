@@ -47,7 +47,6 @@
 .movie__save {
   width: 30px;
   height: 30px;
-  background: url(../../images/save.svg) center no-repeat #313131;
   border: none;
   border-radius: 36px;
   right: 9px;
@@ -57,6 +56,19 @@
   opacity: 1;
   transition: opacity 0.7s;
   cursor: pointer;
+}
+
+.movie__save_disaible {
+  background: url(../../images/save.svg) center no-repeat #313131;
+}
+
+.movie__save_active {
+  background: url(../../images/save-active.svg) center no-repeat #3DDC84;
+}
+
+.movie__save_delete {
+  background: url(../../images/delete-icon.svg) center no-repeat #313131;
+
 }
 
 .movie__save:hover {
