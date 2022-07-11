@@ -9,6 +9,7 @@ import Register from "../Register/Register";
 import Footer from "../Footer/Footer";
 import Navigation from "../Navigation/Navigation";
 import Profile from "../Profile/Profile";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 function App() {
   return (
@@ -37,10 +38,9 @@ function App() {
             </>
           }/>
           <Route path='/profile' element={
-            <>  
+            <>
               <Navigation/>
               <Profile/>
-              <Footer/>
             </>
           }/>
           <Route path='/signin' element={
@@ -48,6 +48,9 @@ function App() {
           }/>
           <Route path='/signup' element={
             <Register/>
+          }/>
+          <Route path='/*' element={
+            <NotFoundPage/>
           }/>
         </Routes>
       </div>

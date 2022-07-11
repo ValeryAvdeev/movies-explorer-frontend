@@ -41,6 +41,12 @@
   height: 34px;
   border: none;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.search__button:hover {
+  opacity: .5;
 }
 
 .search__switch {
