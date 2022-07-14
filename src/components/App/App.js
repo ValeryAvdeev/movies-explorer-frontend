@@ -1,6 +1,6 @@
 import './App.css';
 import Header from "../Header/Header";
-import {Routes, Route, useLocation} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -11,9 +11,11 @@ import Navigation from "../Navigation/Navigation";
 import Profile from "../Profile/Profile";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import {useState} from "react";
 
 function App() {
-
+  const [currentUser, setCurrentUser] = useState({isLoggedIn: false});
 
   return (
     <CurrentUserContext.Povider value={currentUser}>
@@ -27,26 +29,28 @@ function App() {
                 <Footer/>
               </>
             }/>
-            <Route path='/movies' element={
-              <>
-                <Navigation/>
-                <Movies/>
-                <Footer/>
-              </>
-            }/>
-            <Route path='/saved-movies' element={
-              <>
-                <Navigation/>
-                <SavedMovies/>
-                <Footer/>
-              </>
-            }/>
-            <Route path='/profile' element={
-              <>
-                <Navigation/>
-                <Profile/>
-              </>
-            }/>
+            <ProtectedRoute>
+              <Route path='/movies' element={
+                <>
+                  <Navigation/>
+                  <Movies/>
+                  <Footer/>
+                </>
+              }/>
+              <Route path='/saved-movies' element={
+                <>
+                  <Navigation/>
+                  <SavedMovies/>
+                  <Footer/>
+                </>
+              }/>
+              <Route path='/profile' element={
+                <>
+                  <Navigation/>
+                  <Profile/>
+                </>
+              }/>
+            </ProtectedRoute>
             <Route path='/signin' element={
               <Login/>
             }/>

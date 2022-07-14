@@ -7,7 +7,7 @@ function MoviesCard() {
   const [saveButton, setSaveButton] = useState(false);
   const location = useLocation();
 
-  function handleSaveToogle() {
+  function handleSaveToggle() {
     setSaveButton(!saveButton)
   }
 
@@ -18,21 +18,21 @@ function MoviesCard() {
           33 слова о дизайне
         </h3>
         <p className="movie__timeng">1ч 47м</p>
-        <button
-          type="button"
-          className={
-            `movie__save movie__save${
-              location.pathname == '/saved-movies' ? '_delete' :
-                saveButton ? '_active' : '_disaible'
-            }`
-          }
-          onClick={handleSaveToogle}
+        {/*«Сохранённые фильмы» Клик по ней удаляет карточку
+        из сохранённых, отправляя запрос на /movies/movieID нашего API*/}
+        <button type="button"
+                className={
+                  `movie__save movie__save${
+                    location.pathname == '/saved-movies' ? '_delete' :
+                      saveButton ? '_active' : '_disaible'
+                  }`
+                }
+                onClick={handleSaveToggle}
         />
       </div>
-      <img
-        src={foto}
-        className="movie__image"
-        alt='имя из заголовка'
+      <img src={foto}
+           className="movie__image"
+           alt='имя из заголовка'
       />
     </div>
   )

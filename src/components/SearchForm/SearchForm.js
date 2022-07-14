@@ -1,5 +1,5 @@
 import './SearchForm.css';
-
+// Фильм короткометражным до 40 минут включительно.
 function SearchFrom() {
   return (
     <div className='search'>
