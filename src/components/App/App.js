@@ -10,55 +10,56 @@ import Footer from "../Footer/Footer";
 import Navigation from "../Navigation/Navigation";
 import Profile from "../Profile/Profile";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
 function App() {
-  // const Location = useLocation();
-  //
-  // console.log(Location);
+
 
   return (
-    <div className="App">
-      <div className='App__content'>
-        <Routes>
-          <Route path='/' element={
-            <>
-              <Header/>
-              <Main/>
-              <Footer/>
-            </>
-          }/>
-          <Route path='/movies' element={
-            <>
-              <Navigation/>
-              <Movies/>
-              <Footer/>
-            </>
-          }/>
-          <Route path='/saved-movies' element={
-            <>
-              <Navigation/>
-              <SavedMovies/>
-              <Footer/>
-            </>
-          }/>
-          <Route path='/profile' element={
-            <>
-              <Navigation/>
-              <Profile/>
-            </>
-          }/>
-          <Route path='/signin' element={
-            <Login/>
-          }/>
-          <Route path='/signup' element={
-            <Register/>
-          }/>
-          <Route path='/*' element={
-            <NotFoundPage/>
-          }/>
-        </Routes>
+    <CurrentUserContext.Povider value={currentUser}>
+      <div className="App">
+        <div className='App__content'>
+          <Routes>
+            <Route path='/' element={
+              <>
+                <Header/>
+                <Main/>
+                <Footer/>
+              </>
+            }/>
+            <Route path='/movies' element={
+              <>
+                <Navigation/>
+                <Movies/>
+                <Footer/>
+              </>
+            }/>
+            <Route path='/saved-movies' element={
+              <>
+                <Navigation/>
+                <SavedMovies/>
+                <Footer/>
+              </>
+            }/>
+            <Route path='/profile' element={
+              <>
+                <Navigation/>
+                <Profile/>
+              </>
+            }/>
+            <Route path='/signin' element={
+              <Login/>
+            }/>
+            <Route path='/signup' element={
+              <Register/>
+            }/>
+            <Route path='/*' element={
+              <NotFoundPage/>
+            }/>
+          </Routes>
+        </div>
       </div>
-    </div>
+    </CurrentUserContext.Povider>
 
   );
 }
