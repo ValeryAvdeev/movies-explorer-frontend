@@ -22,6 +22,13 @@
   flex-direction: row;
   justify-content: space-between;
   border-bottom: 1px solid #424242;
+  opacity: 1;
+  transition: opacity 0.5s;
+  text-decoration: none;
+}
+
+.portfolio__project:hover {
+  opacity: 0.7;
 }
 
 .portfolio__subtitle {
@@ -33,6 +40,7 @@
   letter-spacing: -0.04em;
   color: #FFFFFF;
   margin: 0 0 19px 0;
+
 }
 
 .portfolio__project:last-of-type {
@@ -67,7 +75,7 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 470px) {
   .portfolio {
     width: 91%;
   }

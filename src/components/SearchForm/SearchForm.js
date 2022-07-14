@@ -11,6 +11,7 @@ function SearchFrom() {
               placeholder='Фильм'
               name='searchInput'
               type='text'
+              required
             />
           </div>
           <button
