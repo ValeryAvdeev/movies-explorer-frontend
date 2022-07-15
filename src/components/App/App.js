@@ -12,10 +12,25 @@ import Profile from "../Profile/Profile";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {mainApi} from "../../utils/MainApi";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({isLoggedIn: false});
+
+  useEffect(() => {
+    if (currentUser.isLoggedIn) {
+      mainApi.getUser()
+        .then(res => {
+          setCurrentUser(prev => {
+            return {...prev, ...res}
+          });
+        })
+        .then(() => {
+
+        })
+    }
+  })
 
   return (
     <CurrentUserContext.Povider value={currentUser}>
