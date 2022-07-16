@@ -1,6 +1,6 @@
 import './App.css';
 import Header from "../Header/Header";
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -16,24 +16,26 @@ import {useEffect, useState} from "react";
 import {mainApi} from "../../utils/MainApi";
 
 function App() {
+  const navigation = useNavigate();
   const [currentUser, setCurrentUser] = useState({isLoggedIn: false});
 
   useEffect(() => {
-    if (currentUser.isLoggedIn) {
+    const jwt = localStorage.getItem('jwt');
+    console.log(jwt);
+    if (jwt) {
       mainApi.getUser()
-        .then(res => {
-          setCurrentUser(prev => {
-            return {...prev, ...res}
+        .then((res) => {
+          setCurrentUser((prev) => {
+            return {...prev, ...res.data, isLoggedIn: true};
           });
+          navigation('/');
         })
-        .then(() => {
-
-        })
+        .catch((error) => console.log(error));
     }
-  })
+  }, [])
 
   return (
-    <CurrentUserContext.Povider value={currentUser}>
+    <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <div className='App__content'>
           <Routes>
@@ -44,7 +46,16 @@ function App() {
                 <Footer/>
               </>
             }/>
-            <ProtectedRoute>
+            <Route path='/signin' element={
+              <Login/>
+            }/>
+            <Route path='/signup' element={
+              <Register/>
+            }/>
+            <Route path='/*' element={
+              <NotFoundPage/>
+            }/>
+            <Route element={<ProtectedRoute/>}>
               <Route path='/movies' element={
                 <>
                   <Navigation/>
@@ -65,21 +76,11 @@ function App() {
                   <Profile/>
                 </>
               }/>
-            </ProtectedRoute>
-            <Route path='/signin' element={
-              <Login/>
-            }/>
-            <Route path='/signup' element={
-              <Register/>
-            }/>
-            <Route path='/*' element={
-              <NotFoundPage/>
-            }/>
+            </Route>
           </Routes>
         </div>
       </div>
-    </CurrentUserContext.Povider>
-
+    </CurrentUserContext.Provider>
   );
 }
 
