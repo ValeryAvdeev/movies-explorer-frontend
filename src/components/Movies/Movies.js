@@ -5,6 +5,8 @@ import Still from "../Still/Still";
 import Preloader from "../Preloader/Preloader";
 
 function Movies() {
+
+
   return (
     <div className='movies'>
       <SearchForm/>

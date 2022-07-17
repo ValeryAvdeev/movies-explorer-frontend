@@ -34,6 +34,17 @@ function App() {
     }
   }, [])
 
+  const onRegister = (name, email, password) => {
+    mainApi.signup(name, email, password)
+      .then(() => {
+        navigation('/movies');
+      })
+      .catch(() => {
+        alert('Что-то пошло не так!\n' +
+          'Попробуйте ещё раз.');
+      })
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -50,7 +61,7 @@ function App() {
               <Login/>
             }/>
             <Route path='/signup' element={
-              <Register/>
+              <Register signUp={onRegister}/>
             }/>
             <Route path='/*' element={
               <NotFoundPage/>
