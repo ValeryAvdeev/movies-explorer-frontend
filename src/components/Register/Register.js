@@ -36,17 +36,16 @@ function Register(props) {
                  name="name"
                  className="authentication__input"
                  value={name || ''}
-            // id="username"
                  {...register("name", {
-                   required: 'name',
+                   required: 'поле для обязательного заполнения',
                    onChange: handleName,
                    minLength: {
                      value: 2,
-                     message: 'Минимум 2 симлова'
+                     message: 'Минимум 2 символа'
                    },
                    maxLength: {
                      value: 30,
-                     message: 'Максимум 30 симлова'
+                     message: 'Максимум 30 символа'
                    }
                  })}
           />
@@ -55,29 +54,39 @@ function Register(props) {
         <label className="authentication__label">E-mail
           <input type="email"
                  name="email"
-                 minLength="5"
-                 maxLength="30"
                  className="authentication__input"
-                 id="userEmail"
-                 required
-                 onChange={handleEmail}
+                 value={email || ''}
+                 {...register("email", {
+                  required: 'поле для обязательного заполнения',
+                  onChange: handleEmail,
+                  pattern: {
+                    value:  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: 'Введите валидный email'
+                  }
+                 })}
           />
-          <span className="authentication__error"></span>
+          <span className="authentication__error">{errors.email?.message}</span>
         </label>
         <label className="authentication__label">Пароль
           <input type="password"
                  name="password"
                  className="authentication__input"
-                 id="password"
-                 minLength="4"
-                 maxLength="40"
-                 required
-                 onChange={handlePassoword}
+                 value={password || ''}
+                 {...register('password', {
+                  required: 'поле для обязательного заполнения',
+                  onChange: handlePassoword,
+                  minLength: {
+                    value: 4,
+                    message: 'пароль должен быть минимун 4 символа'
+                  }
+                 })}
           />
-          <span className="authentication__error"></span>
-          {/*Что-то пошло не так...*/}
+          <span className="authentication__error">{errors.password?.message}</span>
         </label>
-        <button type="submit" className="authentication__button">
+        <button type="submit" 
+                className="authentication__button"
+                disabled={!isValid}
+        >
           Зарегистрироваться
         </button>
         {/*Если в ответе на этот запрос сервер возвращает ошибку, сообщение

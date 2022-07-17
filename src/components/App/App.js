@@ -45,6 +45,21 @@ function App() {
       })
   }
 
+  const onLogin = (email, password) => {
+    mainApi.signin(email, password)
+      .then((res) => {
+        localStorage.setItem('jwt', res.token);
+        setCurrentUser((prev) => {
+          return {...prev, isLoggedIn: true, email};
+        });
+        navigation('/');
+      })
+      .catch((e) => {
+        alert('Что-то пошло не так!\n' +
+          'Попробуйте ещё раз.' + e);
+      })
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -58,7 +73,7 @@ function App() {
               </>
             }/>
             <Route path='/signin' element={
-              <Login/>
+              <Login signin={onLogin}/>
             }/>
             <Route path='/signup' element={
               <Register signUp={onRegister}/>
