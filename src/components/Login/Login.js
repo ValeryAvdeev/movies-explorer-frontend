@@ -19,7 +19,8 @@ function Login(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.signin(email, password);
+    console.log(email)
+    props.signIn(email, password);
   }
   return (
     <div className='authentication'>
@@ -52,24 +53,24 @@ function Login(props) {
             name="password"
             className="authentication__input"
             {...register('password', {
-                  required: 'поле для обязательного заполнения',
-                  onChange: handlePassoword,
-                  minLength: {
-                    value: 4,
-                    message: 'пароль должен быть минимун 4 символа'
-                  }
+              required: 'поле для обязательного заполнения',
+              onChange: handlePassoword,
+              minLength: {
+                value: 4,
+                message: 'пароль должен быть минимун 4 символа'
+              }
             })}
           />
           <span className="authentication__error">{errors.password?.message}</span>
         </label>
-        <Link to='/movies'>
-          <button type="submit"
-                  className="authentication__button"
-                  disabled={!isValid}
-          >
-            Войти
-          </button>
-        </Link>
+        <button type="submit"
+                className={isValid ?
+                  `authentication__button` :
+                  `authentication__button_disabled`}
+                disabled={!isValid}
+        >
+          Войти
+        </button>
       </form>
       <div className='authentication__singnin'>
         <p className='authentication__subtitle'>

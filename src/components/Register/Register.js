@@ -73,18 +73,18 @@ function Register(props) {
                  className="authentication__input"
                  value={password || ''}
                  {...register('password', {
-                  required: 'поле для обязательного заполнения',
-                  onChange: handlePassoword,
-                  minLength: {
-                    value: 4,
-                    message: 'пароль должен быть минимун 4 символа'
-                  }
+                   required: 'поле для обязательного заполнения',
+                   onChange: handlePassoword,
+                   minLength: {
+                     value: 4,
+                     message: 'пароль должен быть минимун 4 символа'
+                   }
                  })}
           />
           <span className="authentication__error">{errors.password?.message}</span>
         </label>
-        <button type="submit" 
-                className="authentication__button"
+        <button type="submit"
+                className={isValid ? `authentication__button` : `authentication__button_disabled`}
                 disabled={!isValid}
         >
           Зарегистрироваться

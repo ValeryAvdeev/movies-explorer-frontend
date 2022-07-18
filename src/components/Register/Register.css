@@ -67,6 +67,24 @@
   color: #FFFFFF;
 }
 
+.authentication__button_disabled {
+  cursor: default;
+  opacity: .2;
+  margin: 0 0 16px 0;
+  width: 396px;
+  height: 45px;
+  border: 0;
+  background-color: #4285F4;
+  border-radius: 3px;
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
 .authentication__button:hover {
   opacity: 0.85;
 }

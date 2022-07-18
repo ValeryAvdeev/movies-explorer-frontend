@@ -32,11 +32,11 @@ class MainApi {
     });
   }
 
-  signup(name, email, password) {
+  signup(email, password) {
     return fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
       headers: this._headers,
-      body: JSON.stringify({name, email, password})
+      body: JSON.stringify({email, password})
     })
       .then(this._checkResponseAuth)
   }
