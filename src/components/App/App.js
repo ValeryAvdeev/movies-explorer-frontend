@@ -18,6 +18,7 @@ import {mainApi} from "../../utils/MainApi";
 
 function App() {
   const navigation = useNavigate();
+
   const [currentUser, setCurrentUser] = useState({isLoggedIn: false});
 
   // информация по ошибкам и приветствие
@@ -46,7 +47,8 @@ function App() {
           setCurrentUser((prev) => {
             return {...prev, ...res.data, isLoggedIn: true};
           });
-          navigation('/movies');
+          // если оставить то не разлогинеться
+          // navigation('/movies');
         })
         .catch((error) => console.log(error));
     }
@@ -61,6 +63,7 @@ function App() {
           return {...prev, isLoggedIn: true, email};
         });
         // setPopupText('Вы успешно зарегистрировались!');
+        console.log('Вы успешно зарегистрировались!');
         navigation('/movies');
       })
       .catch(() => {
@@ -91,10 +94,20 @@ function App() {
       })
   }
 
+  const handleUpdateUser = (currentUser) => {
+    mainApi.patchUser({email: currentUser.email, name: currentUser.name})
+      .then(user => {
+        setCurrentUser(prev => {
+          return {...prev, ...user};
+        })
+      })
+      .catch(err => console.log(`Ошибка в App.js при редактировании информации о user ${err}`))
+  }
+
   const onSubmitLogOut = () => {
     setCurrentUser(({isLoggedIn: false}));
     navigation('/');
-    localStorage.clear();
+    localStorage.removeItem();
   }
 
   // const closePopups = () => {
@@ -140,7 +153,7 @@ function App() {
             {/*  <Route path='/profile' element={*/}
             {/*    <>*/}
             {/*      <Navigation/>*/}
-            {/*      <Profile submitOut={onSubmitOut}/>*/}
+            {/*      <Profile submitOut={onSubmitLogOut}/>*/}
             {/*    </>*/}
             {/*  }/>*/}
             {/*</Route>*/}
@@ -162,7 +175,9 @@ function App() {
               <Route path='/profile' element={
                 <ProtectedRoute>
                   <Navigation/>
-                  <Profile onSubmitLogOut={onSubmitLogOut}/>
+                  <Profile onSubmitLogOut={onSubmitLogOut}
+                           patchUser={handleUpdateUser}
+                  />
                 </ProtectedRoute>
               }/>
 

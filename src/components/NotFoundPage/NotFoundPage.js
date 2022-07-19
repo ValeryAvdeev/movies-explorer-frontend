@@ -9,8 +9,7 @@ function NotFoundPage() {
       </h2>
       <p className="page-error__text">Страница не найдена</p>
       <Link
-        to='/'
-        type='button'
+        to={-1}
         className='page-error__link'
       >
         Назад

@@ -32,19 +32,19 @@ function Navigation() {
         </Link>
         <NavLink to='/movies'
                  className='nav-header__link'
-                 activeClassName='active'
+                 activeclassname='active'
         >
           Фильмы
         </NavLink>
         <NavLink to='/saved-movies'
                  className='nav-header__link'
-                 activeClassName='active'
+                 activeclassname='active'
         >
           Сохранённые фильмы
         </NavLink>
         <NavLink to='/profile'
                  className='nav-header__link'
-                 activeClassName='nav-header__link_active'
+                 activeclassname='nav-header__link_active'
         >
           <img src={iconAccount}
                alt="изображение аккаунта"
