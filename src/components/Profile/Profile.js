@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
-function Profile(onSubmitLogOut, patchUser) {
+function Profile(props) {
   const currentUser = useContext(CurrentUserContext);
   // console.log(currentUser)
   const [edit, setEdit] = useState(false);
@@ -16,7 +16,7 @@ function Profile(onSubmitLogOut, patchUser) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    patchUser({
+    props.patchUser({
       email: email,
       name: name
     });
@@ -26,7 +26,7 @@ function Profile(onSubmitLogOut, patchUser) {
   useEffect(() => {
     setEmail(currentUser.email);
     setName(currentUser.name);
-  }, [])
+  }, [currentUser])
 
   return (
     <div className='profile'>
@@ -60,7 +60,7 @@ function Profile(onSubmitLogOut, patchUser) {
           {/*<span className="authentication__error">{errors.email?.message}</span>*/}
         </div>
         <button type="submit"
-                className={!(name !== currentUser.name || email !== currentUser.email) ?
+                className={!(name !== currentUser.name || email !== currentUser.email) || (name === '' || email === '') ?
                   'profile__button_disabled' : 'profile__button'}
           // disabled={!(name !== currentUser.name || email !== currentUser.email) ?
           //   'profile__button_disabled' : ''}
@@ -71,7 +71,7 @@ function Profile(onSubmitLogOut, patchUser) {
       <Link
         to='/'
         className='profile__link'
-        onClick={onSubmitLogOut}
+        onClick={props.onSubmitLogOut}
         type='button'
       >
         Выйти из аккаунта

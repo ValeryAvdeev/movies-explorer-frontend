@@ -48,19 +48,20 @@ function App() {
             return {...prev, ...res.data, isLoggedIn: true};
           });
           // если оставить то не разлогинеться
-          // navigation('/movies');
+          navigation(-1);
         })
         .catch((error) => console.log(error));
     }
   }, [])
 
-  const onRegister = (name, email, password) => {
-    return mainApi.signup(name, email, password)
+  const onRegister = (email, name, password) => {
+    // console.log(email, password, name);
+    return mainApi.signup(password, email, name)
       .then((res) => {
         console.log(res)
         localStorage.setItem('jwt', res.token);
         setCurrentUser((prev) => {
-          return {...prev, isLoggedIn: true, email};
+          return {...prev, isLoggedIn: true, email, name};
         });
         // setPopupText('Вы успешно зарегистрировались!');
         console.log('Вы успешно зарегистрировались!');
@@ -105,9 +106,9 @@ function App() {
   }
 
   const onSubmitLogOut = () => {
-    setCurrentUser(({isLoggedIn: false}));
+    localStorage.clear();
+    setCurrentUser({isLoggedIn: false});
     navigation('/');
-    localStorage.removeItem();
   }
 
   // const closePopups = () => {
