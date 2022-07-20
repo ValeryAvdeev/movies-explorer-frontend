@@ -4,9 +4,8 @@ import {useContext, useEffect, useState} from "react";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 import {useForm} from "react-hook-form";
 
-function Profile(onSubmitLogOut, patchUser) {
+function Profile(props) {
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser)
 
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -23,10 +22,10 @@ function Profile(onSubmitLogOut, patchUser) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    patchUser({
+    props.patchUser({
       email: email,
       name: name
-    })
+    });
   }
 
   useEffect(() => {
@@ -50,7 +49,7 @@ function Profile(onSubmitLogOut, patchUser) {
             type="name"
             name="name"
             className="profile__input"
-            value={currentUser.name || ''}
+            value={name}
             {...register("name", {
               required: 'поле для обязательного заполнения',
               onChange: handleName,
@@ -71,7 +70,7 @@ function Profile(onSubmitLogOut, patchUser) {
             type="email"
             name="email"
             className="profile__input"
-            value={currentUser.email || ''}
+            value={email}
             {...register("email", {
               required: 'поле для обязательного заполнения',
               onChange: handleEmail,
@@ -90,7 +89,7 @@ function Profile(onSubmitLogOut, patchUser) {
       <Link
         to='/'
         className='profile__link'
-        onClick={onSubmitLogOut}
+        onClick={props.onSubmitLogOut}
         type='button'
       >
         Выйти из аккаунта
