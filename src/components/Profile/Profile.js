@@ -2,38 +2,31 @@ import './Profile.css';
 import {Link} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
-import {useForm} from "react-hook-form";
 
-function Profile(props) {
+function Profile(onSubmitLogOut, patchUser) {
   const currentUser = useContext(CurrentUserContext);
-
+  // console.log(currentUser)
+  const [edit, setEdit] = useState(false);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handleName = (e) => setName(e.target.value);
 
-  const {
-    register, formState: {
-      isValid
-    }
-  } = useForm({mode: "all"});
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    props.patchUser({
+    patchUser({
       email: email,
       name: name
     });
+    setEdit(false);
   }
 
   useEffect(() => {
-    if (currentUser) {
-      setEmail(currentUser.email);
-      setName(currentUser.name);
-    }
-  }, [currentUser])
+    setEmail(currentUser.email);
+    setName(currentUser.name);
+  }, [])
 
   return (
     <div className='profile'>
@@ -45,51 +38,40 @@ function Profile(props) {
       >
         <div className="profile__conteiner">
           <label className="profile__label">Имя</label>
-          <input
-            type="name"
-            name="name"
-            className="profile__input"
-            value={name}
-            {...register("name", {
-              required: 'поле для обязательного заполнения',
-              onChange: handleName,
-              minLength: {
-                value: 2,
-                message: 'Минимум 2 символа'
-              },
-              maxLength: {
-                value: 30,
-                message: 'Максимум 30 символа'
-              }
-            })}
+          <input type="name"
+                 name="name"
+                 className="profile__input"
+                 value={name}
+                 onChange={handleName}
+                 required
           />
+          {/*<span className="authentication__error">{errors.name?.message}</span>*/}
         </div>
         <div className="profile__conteiner">
           <label className="profile__label">E-mail</label>
-          <input
-            type="email"
-            name="email"
-            className="profile__input"
-            value={email}
-            {...register("email", {
-              required: 'поле для обязательного заполнения',
-              onChange: handleEmail,
-              pattern: {
-                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: 'Введите валидный email'
-              }
-            })}
-            required
+          <input type="email"
+                 name="email"
+                 className="profile__input"
+                 value={email}
+                 onChange={handleEmail}
+                 required
+
           />
+          {/*<span className="authentication__error">{errors.email?.message}</span>*/}
         </div>
-        <button type="submit" className={isValid ? `profile__button` : `profile__button_disabled`}>
+        <button type="submit"
+                className={!(name !== currentUser.name || email !== currentUser.email) ?
+                  'profile__button_disabled' : 'profile__button'}
+          // disabled={!(name !== currentUser.name || email !== currentUser.email) ?
+          //   'profile__button_disabled' : ''}
+        >
           Редактировать
         </button>
       </form>
       <Link
         to='/'
         className='profile__link'
-        onClick={props.onSubmitLogOut}
+        onClick={onSubmitLogOut}
         type='button'
       >
         Выйти из аккаунта

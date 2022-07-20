@@ -55,7 +55,7 @@ function App() {
   }, [])
 
   const onRegister = (name, email, password) => {
-    mainApi.signup(name, email, password)
+    return mainApi.signup(name, email, password)
       .then((res) => {
         console.log(res)
         localStorage.setItem('jwt', res.token);
@@ -75,7 +75,7 @@ function App() {
   }
 
   const onLogin = (email, password) => {
-    mainApi.signin(email, password)
+    return mainApi.signin(email, password)
       .then((res) => {
         localStorage.setItem('jwt', res.token);
         console.log(res.token);
