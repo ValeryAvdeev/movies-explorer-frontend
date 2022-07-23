@@ -86,7 +86,7 @@ class MainApi {
                  thumbnail,
                  movieId,
                  nameRU,
-                 nameEN,) {
+                 nameEN) {
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       headers: this._headers,

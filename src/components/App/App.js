@@ -27,7 +27,6 @@ function App() {
 
   useEffect(() => {
     if (currentUser.isLoggedIn) {
-      console.log(currentUser.isLoggedIn);
       mainApi.getUser()
         .then(res => {
           setCurrentUser((prev) => {
@@ -40,7 +39,6 @@ function App() {
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
-    console.log(jwt);
     if (jwt) {
       mainApi.getUser()
         .then((res) => {
@@ -54,14 +52,24 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    if (currentUser.isLoggedIn) {
+      mainApi.getUser()
+        .then(res => {
+          setCurrentUser((prev) => {
+            return {...prev, ...res}
+          });
+        })
+        .catch(err => console.log(`Ошибка в App.js при запросе информации о пользователе ${err}`))
+    }
+  }, [currentUser.isLoggedIn])
+
   const onRegister = (email, name, password) => {
-    // console.log(email, password, name);
     return mainApi.signup(password, email, name)
       .then((res) => {
-        console.log(res)
         localStorage.setItem('jwt', res.token);
         setCurrentUser((prev) => {
-          return {...prev, isLoggedIn: true, email, name};
+          return {...prev, isLoggedIn: true, email};
         });
         // setPopupText('Вы успешно зарегистрировались!');
         console.log('Вы успешно зарегистрировались!');
@@ -79,7 +87,6 @@ function App() {
     return mainApi.signin(email, password)
       .then((res) => {
         localStorage.setItem('jwt', res.token);
-        console.log(res.token);
 
         setCurrentUser((prev) => {
           return {...prev, isLoggedIn: true, email};
@@ -136,28 +143,6 @@ function App() {
             <Route path='/*' element={
               <NotFoundPage/>
             }/>
-            {/*<Route element={<ProtectedRoute/>}>*/}
-            {/*  <Route path='/movies' element={*/}
-            {/*    <>*/}
-            {/*      <Navigation/>*/}
-            {/*      <Movies/>*/}
-            {/*      <Footer/>*/}
-            {/*    </>*/}
-            {/*  }/>*/}
-            {/*  <Route path='/saved-movies' element={*/}
-            {/*    <>*/}
-            {/*      <Navigation/>*/}
-            {/*      <SavedMovies/>*/}
-            {/*      <Footer/>*/}
-            {/*    </>*/}
-            {/*  }/>*/}
-            {/*  <Route path='/profile' element={*/}
-            {/*    <>*/}
-            {/*      <Navigation/>*/}
-            {/*      <Profile submitOut={onSubmitLogOut}/>*/}
-            {/*    </>*/}
-            {/*  }/>*/}
-            {/*</Route>*/}
 
             <Route path='/movies' element={
               <ProtectedRoute>

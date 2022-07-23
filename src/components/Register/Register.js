@@ -35,7 +35,7 @@ function Register(props) {
           <input type="text"
                  name="name"
                  className="authentication__input"
-                 value={''}
+                 value={name || ''}
                  {...register("name", {
                    required: 'поле для обязательного заполнения',
                    onChange: handleName,
@@ -55,7 +55,7 @@ function Register(props) {
           <input type="email"
                  name="email"
                  className="authentication__input"
-                 value={''}
+                 value={email || ''}
                  {...register("email", {
                   required: 'поле для обязательного заполнения',
                   onChange: handleEmail,
@@ -71,7 +71,7 @@ function Register(props) {
           <input type="password"
                  name="password"
                  className="authentication__input"
-                 value={''}
+                 value={password || ''}
                  {...register('password', {
                    required: 'поле для обязательного заполнения',
                    onChange: handlePassoword,
@@ -85,7 +85,7 @@ function Register(props) {
         </label>
         <button type="submit"
                 className={isValid ? `authentication__button` : `authentication__button_disabled`}
-                disabled={!isValid}
+          // disabled={!isValid}
         >
           Зарегистрироваться
         </button>

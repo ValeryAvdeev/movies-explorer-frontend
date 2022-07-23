@@ -19,7 +19,7 @@ class MoviesApi {
     return Promise.reject(`Ошибка ${response.status}`);
   }
 
-  getUser() {
+  getMovies() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     })

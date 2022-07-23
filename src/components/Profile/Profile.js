@@ -5,7 +5,6 @@ import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
 function Profile(props) {
   const currentUser = useContext(CurrentUserContext);
-  // console.log(currentUser)
   const [edit, setEdit] = useState(false);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
