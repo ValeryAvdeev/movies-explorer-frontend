@@ -85,12 +85,14 @@ function SavedMovies() {
     }
   }
 
-  useEffect(() => {
-    const localFilm = localStorage.setItem('savedFilms')
-    if (localFilm) {
-      setFilms(JSON.stringify(localFilm));
-    }
-  }, [])
+  // useEffect(() => {
+  //   const localFilm = localStorage.setItem('savedFilms', films);
+  //   if (localFilm) {
+  //     setFilms(JSON.stringify(localFilm));
+  //   }
+  // }, [])
+
+  console.log(films);
 
   useEffect(() => {
     mainApi.getMoviesUser()

@@ -97,7 +97,7 @@ function Movies() {
     console.log(choice);
     if (choice) {
       // const jwt = localStorage.getItem('token')
-      const savesMovie = {
+      const savedMovie = {
         country: film.country || 'none',
         director: film.director || 'none',
         duration: film.duration,
@@ -110,8 +110,9 @@ function Movies() {
         thumbnail: `${film.image.url}` || 'https://www.youtube.com/',
         movieId: film.id,
       }
+      console.log(savedMovie);
       try {
-        await mainApi.postMoviesUser(savesMovie);
+        // await mainApi.postMoviesUser(savedMovie);
         const newFilm = await mainApi.getMoviesUser();
         setSaveFilm(newFilm);
       } catch (e) {

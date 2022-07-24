@@ -3,7 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MoviesCardList({films, filmsResult, showFilm, savedFilmsToggle, saveFilm}) {
   // console.log(typeof props.filmsResult);
-  console.log(filmsResult);
+  // console.log(filmsResult);
   // console.log(typeof props.savedFilmsToggle);
   // console.log(props.savedFilmsToggle);
   // console.log(props.handleGetMovies);
