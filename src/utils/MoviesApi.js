@@ -20,13 +20,11 @@ class MoviesApi {
   }
 
   getMovies() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}`, {
       headers: this._headers,
     })
       .then(this._handleResponse)
   }
 }
 
-export const moviesApi = new MoviesApi({
-  baseUrl: MOVIES_URL
-});
+export const moviesApi = new MoviesApi(MOVIES_URL);

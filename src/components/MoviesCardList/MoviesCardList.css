@@ -8,6 +8,16 @@
   justify-content: center;
 }
 
+.movies-list__dont {
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
   .movies-list {
     grid-template-columns: repeat(auto-fill, 341px);

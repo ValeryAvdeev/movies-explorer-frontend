@@ -2,28 +2,35 @@ import './SearchForm.css';
 import {useEffect, useState} from "react";
 
 // Фильм короткометражным до 40 минут включительно.
-function SearchFrom(props) {
+function SearchFrom({
+                      handleGetMovies,
+                      buttonShort,
+                      isSearchInput,
+                      handleGetMoviesShort
+                    }) {
   const [input, setInput] = useState('');
   const [toggle, setToggle] = useState(false);
 
-  const handleSubmit = async (e) => {
+  // console.log(typeof handleGetMovies);
+  // console.log(buttonShort);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    props.handleGetMovies(input, toggle);
+    handleGetMovies(input, toggle);
   };
-  console.log(props.buttonShort);
 
   const handleToggle = () => {
     const newToggle = !toggle;
     setToggle(newToggle);
-    props.handleGetMoviesShort(input, newToggle);
+    handleGetMoviesShort(input, newToggle);
   };
 
   const handleInput = (e) => setInput(e.target.value);
 
   useEffect(() => {
-    setToggle(props.buttonShort);
-    setInput(props.isSearchInput);
-  }, [props.buttonShort, props.isSearchInput]);
+    setToggle(buttonShort);
+    setInput(isSearchInput);
+  }, [buttonShort, isSearchInput]);
 
   return (
     <div className='search'>

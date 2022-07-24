@@ -15,7 +15,7 @@ function Movies() {
   // сохраненные фильмы
   const [saveFilm, setSaveFilm] = useState(null);
   //кнопка поиска
-  const [buttonFils, setButtonFilms] = useState(null);
+  const [buttonFilms, setButtonFilms] = useState(null);
 
   // тумблер на короткометражки
   const [buttonShort, setButtonShort] = useState(false);
@@ -31,9 +31,10 @@ function Movies() {
     try {
       // const jwt = localStorage.getItem('jwt');
       // const cardLocal = localStorage.getItem(JSON.stringify('films'));
-      console.log(searchInput);
       const card = await moviesApi.getMovies();
+      // console.log(card);
       let filterCard = card.filter(({nameRU}) => nameRU.toLowerCase().includes(searchInput.toLowerCase()));
+      // console.log(filterCard)
       if (toggle) {
         localStorage.setItem('films', JSON.stringify(filterCard));
         localStorage.setItem('filmsInputSearch', searchInput);
@@ -46,19 +47,24 @@ function Movies() {
         setFilms(spliceShow);
       } else {
         localStorage.setItem('films', JSON.stringify(filterCard));
+        // console.log(localStorage.setItem('films', JSON.stringify(filterCard)))
         localStorage.setItem('filmsInputSearch', searchInput);
 
         // setFilmsButton
         setShowFilm(filterCard);
 
         const spliceShow = filterCard.splice(0, 6);
+        // console.log(spliceShow)
         localStorage.setItem('savedResults', JSON.stringify(spliceShow));
+        // console.log(localStorage.setItem('savedResults', JSON.stringify(spliceShow)));
         setShowFilm(spliceShow);
         setFilms(spliceShow);
+        // console.log(setFilms)
 
       }
     } catch (e) {
       setFilms([]);
+      // console.log(setFilms);
       localStorage.removeItem('films');
       localStorage.removeItem('filmsTumbler');
       localStorage.removeItem('filmsInputSearch');
@@ -67,12 +73,14 @@ function Movies() {
     }
   }
 
+  // console.log(`handleGetMovies ${typeof handleGetMovies}`);
+
   async function handleGetMoviesShort(searchInput, toggle) {
     console.log(searchInput);
     let filterCardShow = [];
     let filterCard = [];
     console.log(searchInput, toggle);
-    handleGetMovies(searchInput, toggle)
+    handleGetMovies(searchInput, toggle);
 
     localStorage.setItem('films', JSON.stringify(filterCardShow.concat(filterCard)));
     localStorage.setItem('filmsTumbler', toggle);
@@ -114,8 +122,9 @@ function Movies() {
     } else {
       try {
         // const jwt = localStorage.getItem('jwt');
-        await mainApi.deleteMoviesUser(film._id);
+        // await mainApi.deleteMoviesUser(film._id);
         const newSave = await mainApi.getMoviesUser();
+        console.log(newSave);
         setSaveFilm(newSave);
       } catch (e) {
         setIsSuccseed(false);
@@ -129,7 +138,7 @@ function Movies() {
     // const jwt = localStorage.getItem('jwt');
     mainApi.getMoviesUser()
       .then(card => {
-        console.log(card);
+        // console.log(card);
         setSaveFilm(card)
       })
       .catch(e => console.log(`ошибка в useEffect Movies при монтировании ${e}`));
@@ -155,6 +164,8 @@ function Movies() {
     }
   }, []);
 
+  // console.log(films);
+
   return (
     <div className='movies'>
       <SearchForm handleGetMovies={handleGetMovies}
@@ -164,9 +175,10 @@ function Movies() {
       />
       {preloader && <Preloader/>}
       {!preloader && films !== null && saveFilm !== null && showFilm !== null &&
-      <MoviesCardList films={films}
-                      buttonFils={buttonFils}
-                      showFilm={showFilm}
+      <MoviesCardList filmsResult={films}
+        // handleGetMovies={handleGetMovies}
+        // buttonFilms={buttonFilms}
+                      films={showFilm}
                       savedFilmsToggle={savedFilmsToggle}
                       saveFilm={saveFilm}
       />

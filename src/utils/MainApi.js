@@ -107,8 +107,8 @@ class MainApi {
       .then(this._handleResponse)
   }
 
-  deleteMoviesUser(_id) {
-    return fetch(`${this._baseUrl}/movies/${_id}`, {
+  deleteMoviesUser(id) {
+    return fetch(`${this._baseUrl}/movies/${id}`, {
       method: 'DELETE',
       headers: this._headers,
     })

@@ -32,6 +32,7 @@ function MoviesCard(props) {
   useEffect(() => {
     if (location.pathname !== '/saved-movies') {
       const saveFilm = props.savedFilm.filter(film => {
+        console.log(film);
         return film.movieId === film.id;
       });
       if (saveFilm.length > 0) {
@@ -41,6 +42,8 @@ function MoviesCard(props) {
       }
     }
   }, [props.savedFilms]);
+
+  console.log(props.film);
 
   return (
     <div className="movie">

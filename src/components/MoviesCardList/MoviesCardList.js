@@ -1,19 +1,28 @@
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList(props) {
-  console.log(props.film);
+function MoviesCardList({films, filmsResult, showFilm, savedFilmsToggle, saveFilm}) {
+  // console.log(typeof props.filmsResult);
+  console.log(filmsResult);
+  // console.log(typeof props.savedFilmsToggle);
+  // console.log(props.savedFilmsToggle);
+  // console.log(props.handleGetMovies);
+
   return (
-    <div className="movies-list">
-      {
-        props.films > 0 ? props.films.map(film => (
-          <MoviesCard key={film._id || film.movieId}
-                      film={film}
-                      savedFilms={props.savedFilm}
-                      savedFilmsToggle={props.savedFilmsToggle}
-          />)) : <p>Фильмов с таким названием</p>
+    <>
+      {films.length > 0 ?
+        <div className="movies-list">
+          {films.map(film => (
+              <MoviesCard key={film.id || film.movieId}
+                          film={film}
+                          savedFilms={saveFilm}
+                          savedFilmsToggle={savedFilmsToggle}
+              />
+            )
+          )}
+        </div> : <p className='movies-list__dont'>Фильмов с таким названием нет</p>
       }
-    </div>
+    </>
   )
 }
 
