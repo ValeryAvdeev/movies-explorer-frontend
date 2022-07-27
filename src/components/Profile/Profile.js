@@ -3,8 +3,11 @@ import {Link} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
-function Profile(props) {
+function Profile({
+                   onUpdateUser, signOut, infoMessage
+                 }) {
   const currentUser = useContext(CurrentUserContext);
+
   const [edit, setEdit] = useState(false);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -15,7 +18,7 @@ function Profile(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    props.patchUser({
+    onUpdateUser({
       email: email,
       name: name
     });
@@ -67,10 +70,11 @@ function Profile(props) {
           Редактировать
         </button>
       </form>
+      <p>{infoMessage}</p>
       <Link
         to='/'
         className='profile__link'
-        onClick={props.onSubmitLogOut}
+        onClick={signOut}
         type='button'
       >
         Выйти из аккаунта

@@ -21,7 +21,8 @@ function Register(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.signUp(name, email, password);
+    console.log(name, email, password);
+    props.signUp({name, email, password});
   }
 
   return (
@@ -92,6 +93,7 @@ function Register(props) {
         {/*Если в ответе на этот запрос сервер возвращает ошибку, сообщение
         о ней должно располагаться над кнопкой «Зарегистрироваться».*/}
       </form>
+      <p>{props.message}</p>
       <div className='authentication__singnin'>
         <p className='authentication__subtitle'>
           Уже зарегистрированы? <Link

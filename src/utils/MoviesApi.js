@@ -8,7 +8,7 @@ class MoviesApi {
   get _headers() {
     return {
       'Content-Type': 'application/json',
-      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      // authorization: `Bearer ${localStorage.getItem("jwt")}`,
     }
   }
 
@@ -19,7 +19,7 @@ class MoviesApi {
     return Promise.reject(`Ошибка ${response.status}`);
   }
 
-  getMovies() {
+  getAllMovies() {
     return fetch(`${this._baseUrl}`, {
       headers: this._headers,
     })

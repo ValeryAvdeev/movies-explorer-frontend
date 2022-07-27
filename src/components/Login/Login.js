@@ -19,7 +19,8 @@ function Login(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.signIn(email, password);
+    console.log({email, password});
+    props.signIn({email, password});
   }
   return (
     <div className='authentication'>
@@ -62,6 +63,7 @@ function Login(props) {
           />
           <span className="authentication__error">{errors.password?.message}</span>
         </label>
+        <p>{props.infoMessage}</p>
         <button type="submit"
                 className={isValid ?
                   `authentication__button` :

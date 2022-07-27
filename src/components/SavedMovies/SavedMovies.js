@@ -1,120 +1,56 @@
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchFrom from '../SearchForm/SearchForm';
 import './SavedMovies.css';
-import {useEffect, useState} from "react";
-import {mainApi} from "../../utils/MainApi";
+import {useEffect, useMemo, useState} from "react";
 import Preloader from "../Preloader/Preloader";
 
-function SavedMovies() {
-  const [films, setFilms] = useState(null);
-  const [preloader, setPreloader] = useState(false);
-  const [filmsToggle, setFilmsToggle] = useState(false);
-  const [filmsInputSearch, setFilmsInputSearch] = useState('');
-  const [filmsShow, setFilmsShow] = useState([]);
+function SavedMovies({
+                       isLoading,
+                       onDelete,
+                       savedMovies,
+                       searchKeyword,
+                     }) {
+  const [checkBoxActive, setCheckBoxActive] = useState(false);
+  const [filter, setFilter] = useState('');
+  const [isNothingFound, setIsNothingFound] = useState(true)
 
-  const [filmsWhithToggle, setFilmsWhithToggle] = useState([]);
-  const [filmsShowWithToggle, setFilmsShowWithToggle] = useState([]);
+  const filterShortMovies = (filterMovies) =>
+    filterMovies.filter((m) => m.duration < 40);
 
-  async function handleGetMovies(inputSearch, toggle) {
-    setPreloader(true);
-    try {
-      const film = films;
-      let filterFilm = film.filter(({nameRU}) => {
-        nameRU.toLowerCase().includes(inputSearch.toLowerCase())
-      });
-      if (toggle) {
-        filterFilm.filter(({duration}) => duration <= 40);
-        setFilmsShow(filterFilm);
-      }
-      if (inputSearch) {
-        localStorage.setItem('savedFilms', JSON.stringify(filterFilm));
-        localStorage.setItem('savedFilmsToggle', toggle);
-        localStorage.setItem('savedFilmsInputSearch', inputSearch);
-      } else {
-        localStorage.setItem('savedFilms');
-        localStorage.setItem('savedFilmsToggle');
-        localStorage.setItem('savedFilmsInputSearch');
-      }
-    } catch (e) {
-      setFilms([]);
-      localStorage.removeItem('savedFilms');
-      localStorage.removeItem('savedFilmsToggle');
-      localStorage.removeItem('savedFilmsInputSearch');
-      console.log(e)
-    } finally {
-      setPreloader(false)
-    }
+  function checkBoxClick() {
+    setCheckBoxActive(!checkBoxActive);
   }
-
-  async function handleGetMoviesToggle(inputSearch, toggle) {
-    let filterFilmShow = [];
-    let filterFilm = [];
-
-    if (toggle) {
-      setFilmsShowWithToggle(filmsShow);
-      setFilmsWhithToggle(films);
-
-      filterFilmShow = filmsShow.filter(({duration}) => duration <= 40);
-      filterFilm = films.filter(({duration}) => duration <= 40);
-
-      handleGetMovies(inputSearch, toggle);
-    } else {
-      filterFilmShow = filmsShowWithToggle;
-      filterFilm = filmsWhithToggle;
-
-      handleGetMovies(inputSearch, toggle);
-    }
-
-    localStorage.setItem('saveFilmsToggle', toggle);
-
-    handleGetMovies(inputSearch, toggle);
-
-    setFilmsShow(filterFilmShow);
-    setFilms(filterFilm);
-  }
-
-  async function saveFilmsToggle(film, choice) {
-    if (!choice) {
-      try {
-        await mainApi.deleteMoviesUser(film._id);
-        const newFilm = await mainApi.postMoviesUser();
-        setFilmsShow(newFilm);
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  }
-
-  // useEffect(() => {
-  //   const localFilm = localStorage.setItem('savedFilms', films);
-  //   if (localFilm) {
-  //     setFilms(JSON.stringify(localFilm));
-  //   }
-  // }, [])
-
-  console.log(films);
 
   useEffect(() => {
-    mainApi.getMoviesUser()
-      .then(card => {
-        setFilms(card);
-        setFilmsShow(card);
-      })
-      .catch(e => console.log(e));
-  })
+    if (filteredMovies.lenght == 0) {
+      setIsNothingFound(false)
+    }
+  }, [])
+
+  const filteredMovies = useMemo(
+    () =>
+      savedMovies.filter((m) =>
+        m.nameRU.toLowerCase().includes(filter.toLowerCase())
+      ),
+    [filter, savedMovies]
+  );
 
   return (
     <div className='movies'>
-      <SearchFrom handleGetMovies={handleGetMovies}
-                  filmsToggle={filmsToggle}
-                  filmsInputSearch={filmsInputSearch}
-                  handleGetMoviesShort={handleGetMoviesToggle}
+      <SearchFrom
+        onSubmit={setFilter}
+        checkBoxClick={checkBoxClick}
+        searchKeyword={searchKeyword}
       />
-      {preloader && <Preloader/>}
-      {!preloader && films !== null &&
-      <MoviesCardList filmsResult={[]}
-                      savedFilmsToggle={saveFilmsToggle}
-                      films={filmsShow}
+      {isLoading && <Preloader/>}
+      {!isLoading &&
+      <MoviesCardList
+        movies={
+          checkBoxActive ? filterShortMovies(filteredMovies) : filteredMovies
+        }
+        onDelete={onDelete}
+        savedMovies={savedMovies}
+        isNothingFound={isNothingFound}
       />
       }
     </div>

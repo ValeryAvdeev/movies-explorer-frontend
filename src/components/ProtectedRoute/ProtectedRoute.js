@@ -4,7 +4,10 @@ import {Navigate} from "react-router-dom";
 
 const ProtectedRoute = ({children}) => {
   const currentUser = useContext(CurrentUserContext);
-  return currentUser?.isLoggedIn ? children : <Navigate to='/'/>
+  console.log({children});
+  console.log(currentUser);
+
+  return currentUser.isLoggedIn ? children : <Navigate to='/'/>
 }
 
 export default ProtectedRoute;

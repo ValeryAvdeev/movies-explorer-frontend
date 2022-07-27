@@ -1,36 +1,29 @@
 import './SearchForm.css';
 import {useEffect, useState} from "react";
+import {useLocation} from "react-router-dom";
 
 // Фильм короткометражным до 40 минут включительно.
 function SearchFrom({
-                      handleGetMovies,
-                      buttonShort,
-                      isSearchInput,
-                      handleGetMoviesShort
+                      onSubmit, checkBoxClick, searchKeyword, isShort
                     }) {
-  const [input, setInput] = useState('');
-  const [toggle, setToggle] = useState(false);
+  const location = useLocation();
 
-  // console.log(typeof handleGetMovies);
-  // console.log(buttonShort);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleGetMovies(input, toggle);
-  };
-
-  const handleToggle = () => {
-    const newToggle = !toggle;
-    setToggle(newToggle);
-    handleGetMoviesShort(input, newToggle);
-  };
-
-  const handleInput = (e) => setInput(e.target.value);
+  const [movie, setMovies] = useState('');
 
   useEffect(() => {
-    setToggle(buttonShort);
-    setInput(isSearchInput);
-  }, [buttonShort, isSearchInput]);
+    if (searchKeyword && location.pathname === "/movies") {
+      setMovies(searchKeyword);
+    }
+  }, []);
+
+  const handleChange = (event) => {
+    setMovies(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(movie);
+  };
 
   return (
     <div className='search'>
@@ -44,8 +37,8 @@ function SearchFrom({
               placeholder='Фильм'
               name='searchInput'
               type='text'
-              value={input}
-              onChange={handleInput}
+              value={movie}
+              onChange={handleChange}
               required
             />
           </div>
@@ -57,9 +50,9 @@ function SearchFrom({
         <div className="search__switch">
           <input type="checkbox"
                  className='search__toggle'
-                 value={toggle}
-                 checked={toggle}
-                 onChange={handleToggle}
+            //  value={toggle}
+                 checked={isShort}
+                 onChange={checkBoxClick}
           />
           <p className='search__text'>Короткометражки</p>
         </div>
