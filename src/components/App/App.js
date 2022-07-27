@@ -20,8 +20,9 @@ function App() {
   const token = localStorage.getItem("jwt");
   // const location = useLocation();
 
-  const [currentUser, setCurrentUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({isLoggedIn: false});
+  // const [currentUser, setCurrentUser] = useState({});
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [allMovies, setAllMovies] = useState(
     JSON.parse(localStorage.getItem("loadedMovies")) || []
@@ -43,8 +44,10 @@ function App() {
     if (token) {
       mainApi
         .getToken(token)
-        .then(() => {
-          setIsLoggedIn(true);
+        .then((res) => {
+          setCurrentUser(prev => {
+            return {...prev, ...res.data, isLoggedIn: true}
+          });
           navigation(-1);
           // console.log(navigation());
         })
@@ -53,10 +56,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (currentUser.isLoggedIn) {
       mainApi
         .getUserInfo(token)
-        .then((user) => setCurrentUser(user))
+        .then((user) => setCurrentUser(prev => {
+          return {...prev, ...user};
+        }))
         .catch((err) => {
           console.log(`Ошибка получения данных пользователя: ${err}`);
         });
@@ -75,7 +80,7 @@ function App() {
         setMovies(filteredMovies);
       }
     }
-  }, [isLoggedIn, filteredMovies]);
+  }, [currentUser.isLoggedIn, filteredMovies]);
 
   const handleRegister = ({name, password, email}) => {
     mainApi
@@ -108,7 +113,9 @@ function App() {
       .then((data) => {
         mainApi.getToken(data.token).then((res) => {
           if (res) {
-            setIsLoggedIn(true);
+            setCurrentUser(prev => {
+              return {...prev, ...res, isLoggedIn: true, password, email};
+            });
             // setTimeout(() => navigation("/movies"), 1000);
             navigation("/movies");
             setLoginleInfoMessage("Авторизация прошла успешно");
@@ -190,12 +197,12 @@ function App() {
     localStorage.removeItem("savedMovies");
     localStorage.removeItem("loadedMovies");
     localStorage.removeItem("jwt");
-    setIsLoggedIn(false);
+    // setCurrentUser(false);
     setIsLoading(false);
     setAllMovies([]);
     setMovies([]);
     setSavedMovies([]);
-    setCurrentUser({});
+    setCurrentUser({isLoggedIn: false});
     setSearchKeyword("");
     setFilteredMovies([]);
     setProfileInfoMessage("");
@@ -252,6 +259,7 @@ function App() {
                              onDelete={handleDeleteMovie}
                              savedMovies={savedMovies}
                              searchKeyword={searchKeyword}
+
                 />
                 <Footer/>
               </ProtectedRoute>
@@ -260,7 +268,7 @@ function App() {
               <ProtectedRoute>
                 <Navigation/>
                 <Profile
-                  isLoggedIn={isLoggedIn}
+                  // isLoggedIn={isLoggedIn}
                   onUpdateUser={handleUpdateUser}
                   signOut={signOut}
                   infoMessage={profileInfoMessage}

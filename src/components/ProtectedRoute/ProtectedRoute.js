@@ -7,7 +7,7 @@ const ProtectedRoute = ({children}) => {
   console.log({children});
   console.log(currentUser);
 
-  return currentUser.isLoggedIn ? children : <Navigate to='/'/>
+  return currentUser?.isLoggedIn ? children : <Navigate to='/'/>
 }
 
 export default ProtectedRoute;

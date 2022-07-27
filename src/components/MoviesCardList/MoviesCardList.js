@@ -24,7 +24,7 @@ function MoviesCardList({
     return {first: 5, extra: 1};
   };
 
-  console.log(movies);
+  // console.log(movies);
 
   const renderAddCards = useCallback(() => {
     const count = Math.min(movies.length, currentCards + addCards);
