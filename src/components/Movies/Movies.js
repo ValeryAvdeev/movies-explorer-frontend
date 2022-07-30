@@ -1,12 +1,9 @@
 import './Movies.css';
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-// import Still from "../Still/Still";
 import Preloader from "../Preloader/Preloader";
 import {useEffect, useState} from "react";
 import {moviesApi} from "../../utils/MoviesApi";
-
-// import {mainApi} from "../../utils/MainApi";
 
 function Movies({
                   isLoading,
@@ -18,19 +15,19 @@ function Movies({
                   searchKeyword,
                   setAllMovies
                 }) {
-  const [checkBoxActive, setCheckBoxActive] = useState(false);
+  const [tumbler, setTumbler] = useState(false);
   const [isShort, setIsShort] = useState(false);
 
-  const checkBoxClick = () => {
-    setCheckBoxActive(!checkBoxActive)
-    localStorage.setItem('checkBox', !checkBoxActive)
+  const tumblerClick = () => {
+    setTumbler(!tumbler)
+    localStorage.setItem('checkBox', !tumbler)
   }
 
   useEffect(() => {
     const checkBoxLocal = localStorage.getItem('checkBox')
     if (checkBoxLocal === 'true') {
       setIsShort(isShort)
-      setCheckBoxActive(true)
+      setTumbler(true)
     }
   }, [])
 
@@ -52,21 +49,19 @@ function Movies({
 
   return (
     <div className='movies'>
-      <SearchForm
-        onSubmit={onSubmit}
-        checkBoxClick={checkBoxClick}
-        searchKeyword={searchKeyword}
-        isShort={checkBoxActive}
+      <SearchForm onSubmit={onSubmit}
+                  tumblerClick={tumblerClick}
+                  searchKeyword={searchKeyword}
+                  isShort={tumbler}
       />
       {isLoading && <Preloader/>}
       {!isLoading && (
-        <MoviesCardList
-          movies={checkBoxActive ? filterShortMovies(movies) : movies}
-          onSave={onSave}
-          onDelete={onDelete}
-          savedMovies={savedMovies}
-          checkBox={checkBoxClick}
-          searchKeyword={searchKeyword}
+        <MoviesCardList movies={tumbler ? filterShortMovies(movies) : movies}
+                        onSave={onSave}
+                        onDelete={onDelete}
+                        savedMovies={savedMovies}
+                        checkBox={tumblerClick}
+                        searchKeyword={searchKeyword}
         />
       )}
     </div>

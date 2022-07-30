@@ -48,6 +48,15 @@
   margin-bottom: 134px;
 }
 
+.authentication__span{
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #fff;
+}
+
 .authentication__button {
   margin: 0 0 16px 0;
   width: 396px;

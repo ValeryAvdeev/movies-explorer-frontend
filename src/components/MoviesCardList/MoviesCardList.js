@@ -70,24 +70,22 @@ function MoviesCardList({
       <section className="movies-list">
         {location.pathname === "/movies" && movies.length ? (
           moviesToShow.map((movie) => (
-            <MoviesCard
-              movie={movie}
-              onSave={onSave}
-              onDelete={onDelete}
-              savedMovies={savedMovies}
-              key={movie.id}
+            <MoviesCard movie={movie}
+                        onSave={onSave}
+                        onDelete={onDelete}
+                        savedMovies={savedMovies}
+                        key={movie.id}
             />
           ))
         ) : (<p className='movies-list__dont'>Фильмов с таким названием нет</p>)
         }
         {location.pathname === "/saved-movies" && movies.length ? (
           moviesToShow.map((movie) => (
-            <MoviesCard
-              movie={movie}
-              onSave={onSave}
-              onDelete={onDelete}
-              savedMovies={savedMovies}
-              key={movie._id}
+            <MoviesCard movie={movie}
+                        onSave={onSave}
+                        onDelete={onDelete}
+                        savedMovies={savedMovies}
+                        key={movie._id}
             />
           ))
         ) : (<p className='movies-list__dont'>у Вас пока нет сохраненых фильмов</p>)
@@ -118,7 +116,9 @@ function MoviesCardList({
       </section>
       <div>
         {location.pathname === '/movies' &&
-        (<Still onClick={renderMovies} hiddingButton={hiddenButton}/>)
+        (<Still onClick={renderMovies} 
+                hiddingButton={hiddenButton}
+        />)
         }
       </div>
     </>

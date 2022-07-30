@@ -43,7 +43,7 @@ class MainApi {
       .then((res) => this._handleResponse(res))
   }
 
-  registration(name, password, email) {
+  signup(name, password, email) {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: {
@@ -54,7 +54,7 @@ class MainApi {
       .then((res) => this._handleResponse(res));
   }
 
-  authorize(password, email) {
+  signin(password, email) {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
       headers: {

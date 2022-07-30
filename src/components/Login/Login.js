@@ -62,7 +62,7 @@ function Login(props) {
           />
           <span className="authentication__error">{errors.password?.message}</span>
         </label>
-        <p>{props.infoMessage}</p>
+        <p className='authentication__span'>{props.infoMessage}</p>
         <button type="submit"
                 className={isValid ?
                   `authentication__button` :

@@ -5,7 +5,10 @@ import {useLocation} from "react-router-dom";
 import {MOVIES} from '../../utils/constant';
 
 function MoviesCard({
-                      movie, onSave, onDelete, savedMovies
+                      movie, 
+                      onSave, 
+                      onDelete, 
+                      savedMovies
                     }) {
   const location = useLocation();
   let hours = Math.floor(movie.duration / 60)

@@ -18,11 +18,8 @@ import {mainApi} from "../../utils/MainApi";
 function App() {
   const navigation = useNavigate();
   const token = localStorage.getItem("jwt");
-  // const location = useLocation();
 
   const [currentUser, setCurrentUser] = useState({isLoggedIn: false});
-  // const [currentUser, setCurrentUser] = useState({});
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [allMovies, setAllMovies] = useState(
     JSON.parse(localStorage.getItem("loadedMovies")) || []
@@ -49,7 +46,6 @@ function App() {
             return {...prev, ...res.data, isLoggedIn: true}
           });
           navigation(-1);
-          // console.log(navigation());
         })
         .catch((err) => console.log(err));
     }
@@ -84,7 +80,7 @@ function App() {
 
   const handleRegister = ({name, password, email}) => {
     mainApi
-      .registration(name, password, email)
+      .signup(name, password, email)
       .then((res) => {
         if (res) {
           handleAutorize({password, email});
@@ -109,15 +105,15 @@ function App() {
 
   const handleAutorize = ({password, email}) => {
     mainApi
-      .authorize(password, email)
+      .signin(password, email)
       .then((data) => {
         mainApi.getToken(data.token).then((res) => {
           if (res) {
             setCurrentUser(prev => {
               return {...prev, ...res, isLoggedIn: true, password, email};
             });
-            // setTimeout(() => navigation("/movies"), 1000);
-            navigation("/movies");
+            setTimeout(() => navigation("/movies"), 1000);
+            // navigation("/movies");
             setLoginleInfoMessage("Авторизация прошла успешно");
           }
         });
@@ -267,11 +263,9 @@ function App() {
             <Route path="/profile" element={
               <ProtectedRoute>
                 <Navigation/>
-                <Profile
-                  // isLoggedIn={isLoggedIn}
-                  onUpdateUser={handleUpdateUser}
-                  signOut={signOut}
-                  infoMessage={profileInfoMessage}
+                <Profile onUpdateUser={handleUpdateUser}
+                         signOut={signOut}
+                         infoMessage={profileInfoMessage}
                 />
               </ProtectedRoute>
             }/>

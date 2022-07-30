@@ -85,20 +85,20 @@ function Register(props) {
         </label>
         <button type="submit"
                 className={isValid ? `authentication__button` : `authentication__button_disabled`}
-          // disabled={!isValid}
+                disabled={!isValid}
         >
           Зарегистрироваться
         </button>
         {/*Если в ответе на этот запрос сервер возвращает ошибку, сообщение
         о ней должно располагаться над кнопкой «Зарегистрироваться».*/}
       </form>
-      <p>{props.message}</p>
+      <p className='authentication__span'>{props.message}</p>
       <div className='authentication__singnin'>
         <p className='authentication__subtitle'>
-          Уже зарегистрированы? <Link
-          to='/signin'
-          className='authentication__login-link'
-        >Войти</Link>
+          Уже зарегистрированы? 
+          <Link to='/signin'
+                className='authentication__login-link'
+          >Войти</Link>
         </p>
       </div>
     </div>

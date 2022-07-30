@@ -4,7 +4,7 @@ import {useLocation} from "react-router-dom";
 
 // Фильм короткометражным до 40 минут включительно.
 function SearchFrom({
-                      onSubmit, checkBoxClick, searchKeyword, isShort
+                      onSubmit, tumblerClick, searchKeyword, isShort
                     }) {
   const location = useLocation();
 
@@ -52,7 +52,7 @@ function SearchFrom({
                  className='search__toggle'
             //  value={toggle}
                  checked={isShort}
-                 onChange={checkBoxClick}
+                 onChange={tumblerClick}
           />
           <p className='search__text'>Короткометражки</p>
         </div>

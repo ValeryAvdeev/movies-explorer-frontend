@@ -10,15 +10,15 @@ function SavedMovies({
                        savedMovies,
                        searchKeyword,
                      }) {
-  const [checkBoxActive, setCheckBoxActive] = useState(false);
+  const [tumbler, setTumbler] = useState(false);
   const [filter, setFilter] = useState('');
   const [isNothingFound, setIsNothingFound] = useState(true)
 
   const filterShortMovies = (filterMovies) =>
     filterMovies.filter((m) => m.duration < 40);
 
-  function checkBoxClick() {
-    setCheckBoxActive(!checkBoxActive);
+  function tumblerClick() {
+    setTumbler(!tumbler);
   }
 
   useEffect(() => {
@@ -37,20 +37,15 @@ function SavedMovies({
 
   return (
     <div className='movies'>
-      <SearchFrom
-        onSubmit={setFilter}
-        checkBoxClick={checkBoxClick}
-        searchKeyword={searchKeyword}
+      <SearchFrom onSubmit={setFilter}
+                  tumblerClick={tumblerClick}
+                  searchKeyword={searchKeyword}
       />
       {isLoading && <Preloader/>}
       {!isLoading &&
-      <MoviesCardList
-        movies={
-          checkBoxActive ? filterShortMovies(filteredMovies) : filteredMovies
-        }
-        onDelete={onDelete}
-        savedMovies={savedMovies}
-        // isNothingFound={isNothingFound}
+      <MoviesCardList movies={tumbler ? filterShortMovies(filteredMovies) : filteredMovies}
+                      onDelete={onDelete}
+                      savedMovies={savedMovies}
       />
       }
     </div>
