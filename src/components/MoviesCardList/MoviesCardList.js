@@ -24,7 +24,6 @@ function MoviesCardList({
     return {first: 5, extra: 1};
   };
 
-  // console.log(movies);
 
   const renderAddCards = useCallback(() => {
     const count = Math.min(movies.length, currentCards + addCards);
@@ -64,37 +63,65 @@ function MoviesCardList({
     renderAddCards();
   }, [renderAddCards]);
 
+  console.log(movies.length);
+  console.log(location.pathname);
   return (
-    <section className="movies-list">
-      {location.pathname === "/movies" && movies.length ? (
-        moviesToShow.map((movie) => (
-          <MoviesCard
-            movie={movie}
-            onSave={onSave}
-            onDelete={onDelete}
-            savedMovies={savedMovies}
-            key={movie.id}
-          />
-        ))
-      ) : (<p className='movies-list__dont'>Фильмов с таким названием нет</p>)
-      }
-      {location.pathname === '/movies' &&
-      (<Still onClick={renderMovies} hiddingButton={hiddenButton}/>)
-      }
-      {location.pathname === "/saved-movies" && movies.length ? (
-        moviesToShow.map((movie) => (
-          <MoviesCard
-            movie={movie}
-            onSave={onSave}
-            onDelete={onDelete}
-            savedMovies={savedMovies}
-            key={movie._id}
-          />
-        ))
-      ) : (<p className='movies-list__dont'>у Вас пока нет сохраненых фильмов</p>)
-      }
-    </section>
-
+    <>
+      <section className="movies-list">
+        {location.pathname === "/movies" && movies.length ? (
+          moviesToShow.map((movie) => (
+            <MoviesCard
+              movie={movie}
+              onSave={onSave}
+              onDelete={onDelete}
+              savedMovies={savedMovies}
+              key={movie.id}
+            />
+          ))
+        ) : (<p className='movies-list__dont'>Фильмов с таким названием нет</p>)
+        }
+        {location.pathname === "/saved-movies" && movies.length ? (
+          moviesToShow.map((movie) => (
+            <MoviesCard
+              movie={movie}
+              onSave={onSave}
+              onDelete={onDelete}
+              savedMovies={savedMovies}
+              key={movie._id}
+            />
+          ))
+        ) : (<p className='movies-list__dont'>у Вас пока нет сохраненых фильмов</p>)
+        }
+{/* 
+        {
+          location.pathname === '/movies' ? (
+          moviesToShow.map((movie) => (
+            <MoviesCard
+              movie={movie}
+              onSave={onSave}
+              onDelete={onDelete}
+              savedMovies={savedMovies}
+              key={movie.id}
+            />
+          ))
+        ) : (
+          moviesToShow.map((movie) => (
+            <MoviesCard
+              movie={movie}
+              onSave={onSave}
+              onDelete={onDelete}
+              savedMovies={savedMovies}
+              key={movie.id}
+            />
+          ))
+        )} */}
+      </section>
+      <div>
+        {location.pathname === '/movies' &&
+        (<Still onClick={renderMovies} hiddingButton={hiddenButton}/>)
+        }
+      </div>
+    </>
   )
 }
 

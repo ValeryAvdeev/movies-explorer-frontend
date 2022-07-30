@@ -50,7 +50,7 @@ function SavedMovies({
         }
         onDelete={onDelete}
         savedMovies={savedMovies}
-        isNothingFound={isNothingFound}
+        // isNothingFound={isNothingFound}
       />
       }
     </div>

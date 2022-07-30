@@ -50,7 +50,6 @@ function Movies({
     filterMovies.filter((m) => m.duration < 40)
 
 
-  // console.log(checkShort);
   return (
     <div className='movies'>
       <SearchForm

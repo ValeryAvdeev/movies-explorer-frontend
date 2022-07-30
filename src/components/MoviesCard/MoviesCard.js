@@ -2,7 +2,7 @@ import './MoviesCard.css';
 // import foto from '../../images/street.png';
 // import {useState, useEffect} from "react";
 import {useLocation} from "react-router-dom";
-import {MAIN_URL} from '../../utils/constant';
+import {MOVIES} from '../../utils/constant';
 
 function MoviesCard({
                       movie, onSave, onDelete, savedMovies
@@ -51,16 +51,16 @@ function MoviesCard({
           }
         </div>
       </div>
-      <a className="movies-card__trailer-link"
+      {/* <a className="movies-card__trailer-link"
          href={movie.trailerLink}
          target='_blank'
          rel="noreferrer"
-      >
-        <img src={`${MAIN_URL}${movie.image.url}`}
+      > */}
+        <img src={`${MOVIES}${movie.image.url}`}
              className="movie__image"
              alt={movie.nameRU}
         />
-      </a>
+      {/* </a> */}
     </div>
   )
 }

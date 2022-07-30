@@ -1,4 +1,4 @@
-import {MAIN_URL} from "./constant";
+import {MAIN_URL, MOVIES} from "./constant";
 
 class MainApi {
   constructor(data) {
@@ -116,9 +116,9 @@ class MainApi {
         duration: movie.duration,
         year: movie.year,
         description: movie.description,
-        image: `${MAIN_URL}${movie.image.url}`,
+        image: `${MOVIES}${movie.image.url}`,
         trailerLink: movie.trailerLink,
-        thumbnail: `${MAIN_URL}${movie.image.formats.thumbnail.url}`,
+        thumbnail: `${MOVIES}${movie.image.formats.thumbnail.url}`,
         movieId: movie.id,
         nameRU: movie.nameRU,
         nameEN: movie.nameEN,
