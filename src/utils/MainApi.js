@@ -1,16 +1,9 @@
-import {MAIN_URL, MOVIES} from "./constant";
+import {MAIN_URL} from "./constant";
 
 class MainApi {
   constructor(data) {
     this._baseUrl = data.baseUrl;
   }
-
-  // get _headers() {
-  //   return {
-  //     'Content-Type': 'application/json',
-  //     authorization: `Bearer ${localStorage.getItem("jwt")}`,
-  //   }
-  // }
 
   _handleResponse = (response) => {
     if (response.ok) {
@@ -18,19 +11,6 @@ class MainApi {
     }
     return Promise.reject(`Ошибка ${response.status}`);
   }
-
-  // _checkResponseAuth = (res) => {
-  //   if (res.ok) {
-  //     return res.json();
-  //   }
-  //   return res.json().then((data) => {
-  //     const {statusCode} = data;
-  //     const {message} = data.message[0].messages[0]
-  //     const error = new Error(message || 'Что-то пошло не так');
-  //     error.status = statusCode;
-  //     throw error;
-  //   });
-  // }
 
   getToken(token) {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -116,9 +96,9 @@ class MainApi {
         duration: movie.duration,
         year: movie.year,
         description: movie.description,
-        image: `${MOVIES}${movie.image.url}`,
+        image: `https://api.nomoreparties.co${movie.image.url}`,
         trailerLink: movie.trailerLink,
-        thumbnail: `${MOVIES}${movie.image.formats.thumbnail.url}`,
+        thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
         movieId: movie.id,
         nameRU: movie.nameRU,
         nameEN: movie.nameEN,

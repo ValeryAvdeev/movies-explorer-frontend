@@ -155,9 +155,11 @@ function App() {
   };
 
   const handleSaveMovie = (movie) => {
+    console.log(movie);
     mainApi
       .postMovies(movie, token)
       .then((data) => {
+        console.log(data);
         setSavedMovies([data, ...savedMovies]);
         localStorage.setItem(
           "savedMovies",

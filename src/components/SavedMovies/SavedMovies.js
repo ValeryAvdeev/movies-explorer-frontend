@@ -12,7 +12,7 @@ function SavedMovies({
                      }) {
   const [tumbler, setTumbler] = useState(false);
   const [filter, setFilter] = useState('');
-  const [isNothingFound, setIsNothingFound] = useState(true)
+  // const [isNothingFound, setIsNothingFound] = useState(true)
 
   const filterShortMovies = (filterMovies) =>
     filterMovies.filter((m) => m.duration < 40);
@@ -23,7 +23,7 @@ function SavedMovies({
 
   useEffect(() => {
     if (filteredMovies.lenght == 0) {
-      setIsNothingFound(false)
+      // setIsNothingFound(false)
     }
   }, [])
 
@@ -34,6 +34,8 @@ function SavedMovies({
       ),
     [filter, savedMovies]
   );
+
+  console.log(filteredMovies);
 
   return (
     <div className='movies'>

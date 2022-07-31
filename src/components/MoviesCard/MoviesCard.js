@@ -27,9 +27,11 @@ function MoviesCard({
   }
 
   function handleDeleteMovie() {
+    console.log(movie);
     onDelete(movie);
   }
 
+  console.log(movie.image.url);
   return (
     <div className="movie">
       <div className="movie__content">

@@ -63,8 +63,8 @@ function MoviesCardList({
     renderAddCards();
   }, [renderAddCards]);
 
-  console.log(movies.length);
-  console.log(location.pathname);
+  console.log(movies);
+  // console.log(location.pathname);
   return (
     <>
       <section className="movies-list">
