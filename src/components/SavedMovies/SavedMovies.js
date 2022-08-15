@@ -21,11 +21,11 @@ function SavedMovies({
     setTumbler(!tumbler);
   }
 
-  useEffect(() => {
-    if (filteredMovies.lenght == 0) {
-      // setIsNothingFound(false)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (filteredMovies.lenght === 0) {
+  //     setIsNothingFound(false)
+  //   }
+  // }, [])
 
   const filteredMovies = useMemo(
     () =>

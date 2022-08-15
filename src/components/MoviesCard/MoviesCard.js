@@ -31,7 +31,7 @@ function MoviesCard({
     onDelete(movie);
   }
 
-  console.log(movie.image.url);
+  console.log(location.pathname);
   return (
     <div className="movie">
       <div className="movie__content">
@@ -61,7 +61,7 @@ function MoviesCard({
          target='_blank'
          rel="noreferrer"
       > */}
-        <img src={`${MOVIES}${movie.image.url}`}
+        <img src={ location.pathname === '/movies' ? `${MOVIES}${movie.image.url}` : `${movie.image}` }
              className="movie__image"
              alt={movie.nameRU}
         />

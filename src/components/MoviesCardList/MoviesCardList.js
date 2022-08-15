@@ -10,6 +10,7 @@ function MoviesCardList({
                           onSave,
                           onDelete,
                           savedMovies,
+                          moviesSave
                         }) {
   const location = useLocation();
   const [currentCards, setCurrentCards] = useState(0);
@@ -63,7 +64,7 @@ function MoviesCardList({
     renderAddCards();
   }, [renderAddCards]);
 
-  console.log(movies);
+  // console.log(moviesSave);
   // console.log(location.pathname);
   return (
     <>
@@ -77,9 +78,7 @@ function MoviesCardList({
                         key={movie.id}
             />
           ))
-        ) : (<p className='movies-list__dont'>Фильмов с таким названием нет</p>)
-        }
-        {location.pathname === "/saved-movies" && movies.length ? (
+        ) : location.pathname === "/saved-movies" && movies.length ? (
           moviesToShow.map((movie) => (
             <MoviesCard movie={movie}
                         onSave={onSave}
@@ -88,31 +87,8 @@ function MoviesCardList({
                         key={movie._id}
             />
           ))
-        ) : (<p className='movies-list__dont'>у Вас пока нет сохраненых фильмов</p>)
+        ) : (<p className='movies-list__dont'>Фильмов нет</p>)
         }
-{/* 
-        {
-          location.pathname === '/movies' ? (
-          moviesToShow.map((movie) => (
-            <MoviesCard
-              movie={movie}
-              onSave={onSave}
-              onDelete={onDelete}
-              savedMovies={savedMovies}
-              key={movie.id}
-            />
-          ))
-        ) : (
-          moviesToShow.map((movie) => (
-            <MoviesCard
-              movie={movie}
-              onSave={onSave}
-              onDelete={onDelete}
-              savedMovies={savedMovies}
-              key={movie.id}
-            />
-          ))
-        )} */}
       </section>
       <div>
         {location.pathname === '/movies' &&
