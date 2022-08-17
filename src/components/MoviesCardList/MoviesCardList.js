@@ -9,8 +9,7 @@ function MoviesCardList({
                           movies,
                           onSave,
                           onDelete,
-                          savedMovies,
-                          moviesSave
+                          savedMovies
                         }) {
   const location = useLocation();
   const [currentCards, setCurrentCards] = useState(0);
@@ -92,7 +91,7 @@ function MoviesCardList({
       </section>
       <div>
         {location.pathname === '/movies' &&
-        (<Still onClick={renderMovies} 
+        (<Still onClick={renderMovies}
                 hiddingButton={hiddenButton}
         />)
         }

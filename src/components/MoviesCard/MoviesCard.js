@@ -5,9 +5,9 @@ import {useLocation} from "react-router-dom";
 import {MOVIES} from '../../utils/constant';
 
 function MoviesCard({
-                      movie, 
-                      onSave, 
-                      onDelete, 
+                      movie,
+                      onSave,
+                      onDelete,
                       savedMovies
                     }) {
   const location = useLocation();
@@ -16,22 +16,21 @@ function MoviesCard({
     .toString()
     .padStart(2, "0");
 
-  const isSaved = savedMovies.some((m) => m.movieId === movie.id);
+  const isSaved = savedMovies.some((i) => i.movieId === movie.id);
+  console.log(isSaved);
 
   function handleSaveClick() {
     if (isSaved) {
-      onDelete(savedMovies.filter((m) => m.movieId === movie.id)[0]);
+      onDelete(savedMovies.filter((i) => i.movieId === movie.id)[0]);
     } else {
       onSave(movie);
     }
   }
 
   function handleDeleteMovie() {
-    console.log(movie);
     onDelete(movie);
   }
 
-  console.log(location.pathname);
   return (
     <div className="movie">
       <div className="movie__content">
@@ -39,8 +38,6 @@ function MoviesCard({
           {movie.nameRU}
         </h3>
         <p className="movie__timeng">{`${hours}ч ${minutes}м`}</p>
-        {/*«Сохранённые фильмы» Клик по ней удаляет карточку
-        из сохранённых, отправляя запрос на /movies/movieID нашего API*/}
         <div>
           {location.pathname === '/movies' ?
             <button type="button"

@@ -1,7 +1,7 @@
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchFrom from '../SearchForm/SearchForm';
 import './SavedMovies.css';
-import {useEffect, useMemo, useState} from "react";
+import {useMemo, useState} from "react";
 import Preloader from "../Preloader/Preloader";
 
 function SavedMovies({
@@ -15,7 +15,7 @@ function SavedMovies({
   // const [isNothingFound, setIsNothingFound] = useState(true)
 
   const filterShortMovies = (filterMovies) =>
-    filterMovies.filter((m) => m.duration < 40);
+    filterMovies.filter((i) => i.duration < 40);
 
   function tumblerClick() {
     setTumbler(!tumbler);
@@ -29,13 +29,11 @@ function SavedMovies({
 
   const filteredMovies = useMemo(
     () =>
-      savedMovies.filter((m) =>
-        m.nameRU.toLowerCase().includes(filter.toLowerCase())
+      savedMovies.filter((i) =>
+        i.nameRU.toLowerCase().includes(filter.toLowerCase())
       ),
     [filter, savedMovies]
   );
-
-  console.log(filteredMovies);
 
   return (
     <div className='movies'>

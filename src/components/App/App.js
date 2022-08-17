@@ -175,6 +175,7 @@ function App() {
     const savedMovie = savedMovies.find(
       (item) => item.movieId === movie.movieId
     );
+    console.log(savedMovie)
     mainApi
       .deleteMovies(savedMovie._id, token)
       .then(() => {
