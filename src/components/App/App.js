@@ -124,11 +124,14 @@ function App() {
   };
 
   const handleUpdateUser = (user) => {
+    // console.log(user);
     mainApi
       .editProfile(user, token)
       .then((userInfo) => {
         setProfileInfoMessage("Данные пользователя обновлеы успешно");
-        setCurrentUser(userInfo);
+        setCurrentUser(prev => {
+          return {...prev, ...userInfo};
+        });
       })
       .catch((err) => {
         console.log(`ошибка ${err}`)
@@ -155,7 +158,7 @@ function App() {
   };
 
   const handleSaveMovie = (movie) => {
-    console.log(movie);
+    // console.log(movie);
     mainApi
       .postMovies(movie, token)
       .then((data) => {
@@ -172,16 +175,22 @@ function App() {
   };
 
   const handleDeleteMovie = (movie) => {
+    console.log(movie);
     const savedMovie = savedMovies.find(
       (item) => item.movieId === movie.movieId
     );
-    console.log(savedMovie)
     mainApi
       .deleteMovies(savedMovie._id, token)
       .then(() => {
         const newMoviesList = savedMovies.filter(
-          (item) => item._id !== savedMovie._id
+          (item) => {
+            console.log(item);
+            return item._id !== savedMovie._id
+          }
         );
+        console.log(savedMovie._id);
+        console.log(savedMovie);
+        console.log(newMoviesList);
         setSavedMovies(newMoviesList);
       })
       .catch((err) => {
@@ -196,7 +205,6 @@ function App() {
     localStorage.removeItem("savedMovies");
     localStorage.removeItem("loadedMovies");
     localStorage.removeItem("jwt");
-    // setCurrentUser(false);
     setIsLoading(false);
     setAllMovies([]);
     setMovies([]);
@@ -235,18 +243,17 @@ function App() {
             <Route path="/*" element={
               <NotFoundPage/>
             }/>
-
             <Route path="/movies" element={
               <ProtectedRoute>
                 <Navigation/>
-                <Movies isLoading={isLoading}
-                        movies={movies}
+                <Movies movies={movies}
                         onSubmit={handleSearchMovies}
                         onSave={handleSaveMovie}
                         onDelete={handleDeleteMovie}
                         searchKeyword={searchKeyword}
                         savedMovies={savedMovies}
                         setAllMovies={setAllMovies}
+                        isLoading={isLoading}
                 />
                 <Footer/>
               </ProtectedRoute>
@@ -254,11 +261,10 @@ function App() {
             <Route path="/saved-movies" element={
               <ProtectedRoute>
                 <Navigation/>
-                <SavedMovies isLoading={isLoading}
-                             onDelete={handleDeleteMovie}
+                <SavedMovies onDelete={handleDeleteMovie}
                              savedMovies={savedMovies}
                              searchKeyword={searchKeyword}
-
+                             isLoading={isLoading}
                 />
                 <Footer/>
               </ProtectedRoute>
@@ -272,7 +278,6 @@ function App() {
                 />
               </ProtectedRoute>
             }/>
-
           </Routes>
         </div>
       </div>

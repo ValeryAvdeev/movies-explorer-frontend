@@ -11,6 +11,10 @@ function MoviesCardList({
                           onDelete,
                           savedMovies
                         }) {
+  // console.log('MoviesCardList');
+  // console.log('MoviesCardList' + movies);
+  // console.log('MoviesCardList' + savedMovies);
+
   const location = useLocation();
   const [currentCards, setCurrentCards] = useState(0);
   const [addCards, setAddCards] = useState(7);

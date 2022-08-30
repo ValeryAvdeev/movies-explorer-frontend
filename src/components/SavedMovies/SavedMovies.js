@@ -3,16 +3,24 @@ import SearchFrom from '../SearchForm/SearchForm';
 import './SavedMovies.css';
 import {useMemo, useState} from "react";
 import Preloader from "../Preloader/Preloader";
+// import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
 function SavedMovies({
-                       isLoading,
                        onDelete,
                        savedMovies,
                        searchKeyword,
+                       isLoading
                      }) {
+  // const currentUser = useContext(CurrentUserContext);
+  // console.log('SavedMovies');
+  // console.log('SavedMovies ' + onDelete);
+  // console.log('SavedMovies ' + savedMovies);
+  // console.log('SavedMovies ' + searchKeyword);
+  // console.log('SavedMovies ' + isLoading);
+
+
   const [tumbler, setTumbler] = useState(false);
   const [filter, setFilter] = useState('');
-  // const [isNothingFound, setIsNothingFound] = useState(true)
 
   const filterShortMovies = (filterMovies) =>
     filterMovies.filter((i) => i.duration < 40);
@@ -43,7 +51,10 @@ function SavedMovies({
       />
       {isLoading && <Preloader/>}
       {!isLoading &&
-      <MoviesCardList movies={tumbler ? filterShortMovies(filteredMovies) : filteredMovies}
+      <MoviesCardList movies={tumbler ?
+        filterShortMovies(filteredMovies)
+        : filteredMovies
+      }
                       onDelete={onDelete}
                       savedMovies={savedMovies}
       />

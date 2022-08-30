@@ -10,6 +10,10 @@ function MoviesCard({
                       onDelete,
                       savedMovies
                     }) {
+
+  // console.log('MoviesCard ' + movie);
+  // console.log('MoviesCard ' + savedMovies);
+
   const location = useLocation();
   let hours = Math.floor(movie.duration / 60)
   let minutes = Math.floor(movie.duration - hours * 60)
@@ -17,7 +21,6 @@ function MoviesCard({
     .padStart(2, "0");
 
   const isSaved = savedMovies.some((i) => i.movieId === movie.id);
-  console.log(isSaved);
 
   function handleSaveClick() {
     if (isSaved) {
