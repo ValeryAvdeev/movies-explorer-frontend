@@ -124,7 +124,6 @@ function App() {
   };
 
   const handleUpdateUser = (user) => {
-    // console.log(user);
     mainApi
       .editProfile(user, token)
       .then((userInfo) => {
@@ -158,11 +157,9 @@ function App() {
   };
 
   const handleSaveMovie = (movie) => {
-    // console.log(movie);
     mainApi
       .postMovies(movie, token)
       .then((data) => {
-        console.log(data);
         setSavedMovies([data, ...savedMovies]);
         localStorage.setItem(
           "savedMovies",
@@ -175,7 +172,6 @@ function App() {
   };
 
   const handleDeleteMovie = (movie) => {
-    console.log(movie);
     const savedMovie = savedMovies.find(
       (item) => item.movieId === movie.movieId
     );
@@ -184,13 +180,9 @@ function App() {
       .then(() => {
         const newMoviesList = savedMovies.filter(
           (item) => {
-            console.log(item);
             return item._id !== savedMovie._id
           }
         );
-        console.log(savedMovie._id);
-        console.log(savedMovie);
-        console.log(newMoviesList);
         setSavedMovies(newMoviesList);
       })
       .catch((err) => {
@@ -240,9 +232,7 @@ function App() {
                         message={registerInfoMessage}
               />
             }/>
-            <Route path="/*" element={
-              <NotFoundPage/>
-            }/>
+
             <Route path="/movies" element={
               <ProtectedRoute>
                 <Navigation/>
@@ -277,6 +267,9 @@ function App() {
                          infoMessage={profileInfoMessage}
                 />
               </ProtectedRoute>
+            }/>
+            <Route path="*" element={
+              <NotFoundPage/>
             }/>
           </Routes>
         </div>

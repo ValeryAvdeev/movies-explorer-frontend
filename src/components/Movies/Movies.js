@@ -19,16 +19,6 @@ function Movies({
                   isLoading
                 }) {
 
-  // console.log('Movies ' + movies);
-  // console.log('Movies ' + savedMovies);
-  // console.log('Movies ' + onSubmit);
-  // console.log('Movies ' + onDelete);
-  // console.log('Movies ' + searchKeyword);
-  // console.log('Movies ' + setAllMovies);
-  // console.log('Movies ' + isLoading);
-
-
-  // const currentUser = useContext(CurrentUserContext);
   const [tumbler, setTumbler] = useState(false);
   const [isShort, setIsShort] = useState(false);
 

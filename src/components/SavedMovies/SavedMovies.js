@@ -11,12 +11,6 @@ function SavedMovies({
                        searchKeyword,
                        isLoading
                      }) {
-  // const currentUser = useContext(CurrentUserContext);
-  // console.log('SavedMovies');
-  // console.log('SavedMovies ' + onDelete);
-  // console.log('SavedMovies ' + savedMovies);
-  // console.log('SavedMovies ' + searchKeyword);
-  // console.log('SavedMovies ' + isLoading);
 
 
   const [tumbler, setTumbler] = useState(false);

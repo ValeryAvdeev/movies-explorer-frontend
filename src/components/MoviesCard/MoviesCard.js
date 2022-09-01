@@ -11,9 +11,6 @@ function MoviesCard({
                       savedMovies
                     }) {
 
-  // console.log('MoviesCard ' + movie);
-  // console.log('MoviesCard ' + savedMovies);
-
   const location = useLocation();
   let hours = Math.floor(movie.duration / 60)
   let minutes = Math.floor(movie.duration - hours * 60)
@@ -56,16 +53,16 @@ function MoviesCard({
           }
         </div>
       </div>
-      {/* <a className="movies-card__trailer-link"
+      <a className="movie__trailerLink"
          href={movie.trailerLink}
          target='_blank'
          rel="noreferrer"
-      > */}
-        <img src={ location.pathname === '/movies' ? `${MOVIES}${movie.image.url}` : `${movie.image}` }
+      >
+        <img src={location.pathname === '/movies' ? `${MOVIES}${movie.image.url}` : `${movie.image}`}
              className="movie__image"
              alt={movie.nameRU}
         />
-      {/* </a> */}
+      </a>
     </div>
   )
 }
