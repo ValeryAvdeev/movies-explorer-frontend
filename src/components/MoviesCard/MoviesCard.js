@@ -2,7 +2,7 @@ import './MoviesCard.css';
 // import foto from '../../images/street.png';
 // import {useState, useEffect} from "react";
 import {useLocation} from "react-router-dom";
-import {MOVIES} from '../../utils/constant';
+import {MOVIES, DURATION_FILMS} from '../../utils/constant';
 
 function MoviesCard({
                       movie,
@@ -12,8 +12,8 @@ function MoviesCard({
                     }) {
 
   const location = useLocation();
-  let hours = Math.floor(movie.duration / 60)
-  let minutes = Math.floor(movie.duration - hours * 60)
+  let hours = Math.floor(movie.duration / DURATION_FILMS)
+  let minutes = Math.floor(movie.duration - hours * DURATION_FILMS)
     .toString()
     .padStart(2, "0");
 

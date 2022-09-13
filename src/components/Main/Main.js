@@ -5,7 +5,7 @@ import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
 
-function Main() {
+function Main({isLoading}) {
   return (
     <main className='main'>
       <Promo/>

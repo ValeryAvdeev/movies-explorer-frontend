@@ -23,7 +23,9 @@ function Login(props) {
   }
   return (
     <div className='authentication'>
-      <img src={logo} alt="логотип" className='logo logo_sign'/>
+      <a href='/'>
+        <img src={logo} alt="логотип" className='logo logo_sign'/>
+      </a>
       <h2 className='authentication__title'>Рады видеть!</h2>
       <form
         className='authentication__form'

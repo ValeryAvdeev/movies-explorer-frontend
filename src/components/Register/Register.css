@@ -44,11 +44,15 @@
   margin: 5px 0 0 0;
 }
 
+.authentication__input::placeholder {
+  color: #fff;
+}
+
 .authentication__label:last-of-type {
   margin-bottom: 134px;
 }
 
-.authentication__span{
+.authentication__span {
   font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;

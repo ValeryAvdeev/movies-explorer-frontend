@@ -17,9 +17,12 @@ function Navigation() {
 
   return (
     <div className="nav-header">
-      <img src={logo}
-           alt="логотип" className='logo'
-      />
+      <a href='/'>
+        <img src={logo}
+             alt="логотип"
+             className='logo'
+        />
+      </a>
       <div className={menuOpen ? 'nav-header__burger-overlay' : ''}
            onClick={handleMenu}
       />

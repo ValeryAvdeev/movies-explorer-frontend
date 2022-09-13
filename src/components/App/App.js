@@ -43,11 +43,15 @@ function App() {
         .getToken(token)
         .then((res) => {
           setCurrentUser(prev => {
+            setIsLoading(true);
             return {...prev, ...res.data, isLoggedIn: true}
           });
-          navigation(-1);
+          // navigation(-1);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(setIsLoading(true));
+    } else {
+      setIsLoading(true)
     }
   }, []);
 
@@ -153,7 +157,7 @@ function App() {
     setFilteredMovies(newMovies);
     localStorage.setItem("searchKeyword", name);
     setSearchKeyword(name);
-    setTimeout(() => setIsLoading(false), 1000);
+    // setTimeout(() => setIsLoading(false), 1000);
   };
 
   const handleSaveMovie = (movie) => {
@@ -217,7 +221,7 @@ function App() {
           <Routes>
             <Route path="/" element={
               <>
-                <Header/>
+                <Header isLoading={isLoading}/>
                 <Main/>
                 <Footer/>
               </>

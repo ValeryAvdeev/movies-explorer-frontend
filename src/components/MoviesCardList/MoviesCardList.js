@@ -1,7 +1,7 @@
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {useCallback, useEffect, useState} from "react";
-import {MOBILE_SIZE} from "../../utils/constant";
+import {MOBILE_SIZE, SHOW_FILMS} from "../../utils/constant";
 import {useLocation} from "react-router-dom";
 import Still from "../Still/Still";
 
@@ -14,13 +14,13 @@ function MoviesCardList({
 
   const location = useLocation();
   const [currentCards, setCurrentCards] = useState(0);
-  const [addCards, setAddCards] = useState(7);
+  const [addCards, setAddCards] = useState(SHOW_FILMS);
   const [moviesToShow, setMoviesToShow] = useState([]);
   const [hiddenButton, setHiddenButton] = useState(false);
 
   const getCards = (windowSize) => {
     if (windowSize > MOBILE_SIZE) {
-      return {first: 7, extra: 7};
+      return {first: SHOW_FILMS, extra: SHOW_FILMS};
     }
     return {first: 5, extra: 1};
   };
@@ -89,7 +89,7 @@ function MoviesCardList({
         }
       </section>
       <div>
-        {location.pathname === '/movies' &&
+        {movies.length > addCards &&
         (<Still onClick={renderMovies}
                 hiddingButton={hiddenButton}
         />)

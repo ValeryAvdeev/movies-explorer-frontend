@@ -58,8 +58,8 @@ function Movies({
                   searchKeyword={searchKeyword}
                   isShort={tumbler}
       />
-      {isLoading && <Preloader/>}
-      {!isLoading && (
+      {!isLoading && <Preloader/>}
+      {isLoading && (
         <MoviesCardList movies={tumbler ? filterShortMovies(movies) : movies}
                         onSave={onSave}
                         onDelete={onDelete}

@@ -43,8 +43,8 @@ function SavedMovies({
                   tumblerClick={tumblerClick}
                   searchKeyword={searchKeyword}
       />
-      {isLoading && <Preloader/>}
-      {!isLoading &&
+      {!isLoading && <Preloader/>}
+      {isLoading &&
       <MoviesCardList movies={tumbler ?
         filterShortMovies(filteredMovies)
         : filteredMovies
