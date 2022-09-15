@@ -50,7 +50,7 @@ function Movies({
   const filterShortMovies = (filterMovies) =>
     filterMovies.filter((m) => m.duration < 40)
 
-  console.log(isLoading);
+  // console.log(isLoading);
   return (
     <div className='movies'>
       <SearchForm onSubmit={onSubmit}

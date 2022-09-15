@@ -39,7 +39,7 @@
   color: #fff;
   width: 396px;
   border-bottom: 1px solid #CCCCCC;
-  /* box-shadow: inset 0 0 0 1000px #202020; */
+  box-shadow: inset 0 0 0 1000px #202020;
   box-sizing: border-box;
   margin: 5px 0 0 0;
 }

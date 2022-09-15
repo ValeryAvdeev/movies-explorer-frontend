@@ -50,9 +50,10 @@ function App() {
         })
         .catch((err) => console.log(err))
         .finally(setIsLoading(true));
-    } else {
-      setIsLoading(true)
     }
+    // else {
+    //   setIsLoading(true)
+    // }
   }, []);
 
   useEffect(() => {
