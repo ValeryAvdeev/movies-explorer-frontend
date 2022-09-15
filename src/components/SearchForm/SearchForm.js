@@ -30,6 +30,7 @@ function SearchFrom({
       <div className='search__content'>
         <form className='search__form'
               onSubmit={handleSubmit}
+              noValidate
         >
           <div className='search__icon search__icon_loupe'>
             <input
@@ -56,6 +57,8 @@ function SearchFrom({
           />
           <p className='search__text'>Короткометражки</p>
         </div>
+        {/* <span className='search__error'>Нужно ввести ключевое слово</span> */}
+
       </div>
     </div>
   )

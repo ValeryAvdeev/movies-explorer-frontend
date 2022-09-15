@@ -37,6 +37,16 @@
   flex: 1;
 }
 
+.search__error {
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+  margin: 6px 0 0 0;
+}
+
 .search__button {
   background: url(../../images/icon_search.svg) no-repeat #4285F4 center;
   border-radius: 48px;

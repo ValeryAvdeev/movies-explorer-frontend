@@ -113,6 +113,7 @@ function App() {
       .then((data) => {
         mainApi.getToken(data.token).then((res) => {
           if (res) {
+            setIsLoading(true);
             setCurrentUser(prev => {
               return {...prev, ...res, isLoggedIn: true, password, email};
             });

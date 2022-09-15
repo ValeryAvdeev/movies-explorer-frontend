@@ -6,6 +6,7 @@ import Navigation from '../Navigation/Navigation';
 // import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
 function Header({isLoading}) {
+  console.log(isLoading);
   return (
     <>
       {!isLoading ?

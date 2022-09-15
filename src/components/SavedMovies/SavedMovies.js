@@ -3,7 +3,6 @@ import SearchFrom from '../SearchForm/SearchForm';
 import './SavedMovies.css';
 import {useMemo, useState} from "react";
 import Preloader from "../Preloader/Preloader";
-// import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
 function SavedMovies({
                        onDelete,
