@@ -231,11 +231,13 @@ function App() {
             <Route path="/signin" element={
               <Login signIn={handleAutorize}
                      message={loginInfoMessage}
+                     isLoading={isLoading}
               />
             }/>
             <Route path="/signup" element={
               <Register signUp={handleRegister}
                         message={registerInfoMessage}
+                        isLoading={isLoading}
               />
             }/>
 

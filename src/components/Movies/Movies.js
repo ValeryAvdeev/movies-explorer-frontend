@@ -4,6 +4,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 import {useEffect, useState} from "react";
 import {moviesApi} from "../../utils/MoviesApi";
+import {SHORT_FILMS} from '../../utils/constant';
 
 // import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
@@ -48,7 +49,7 @@ function Movies({
   }, [])
 
   const filterShortMovies = (filterMovies) =>
-    filterMovies.filter((m) => m.duration < 40)
+    filterMovies.filter((m) => m.duration < SHORT_FILMS)
 
   // console.log(isLoading);
   return (

@@ -3,7 +3,7 @@
 
 <ul>
  <li><a href="https://firstmovie.nomoredomains.sbs/">Ссылка на проект</a></li>
- <li><a href="https://github.com/ValeryAvdeev/movies-explorer-frontend/pull/2">Pull request</a></li>
+ <li><a href="https://github.com/ValeryAvdeev/movies-explorer-frontend/compare/main...level-3">Pull request</a></li>
 </ul>
 
 <h1 align=center>Сервис по поиску фильмов с личным кабинетом где можно изменить имя и email и возможностью сохранять фильмы в отдельном месте.

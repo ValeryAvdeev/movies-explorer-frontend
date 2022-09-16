@@ -16,9 +16,9 @@ function MoviesCardList({
   const [currentCards, setCurrentCards] = useState(0);
   const [addCards, setAddCards] = useState(SHOW_FILMS);
   const [moviesToShow, setMoviesToShow] = useState([]);
-  const [hiddenButton, setHiddenButton] = useState(false);
-
+  // const [hiddenButton, setHiddenButton] = useState(false);
   const getCards = (windowSize) => {
+    console.log('getCards')
     if (windowSize > MOBILE_SIZE) {
       return {first: SHOW_FILMS, extra: SHOW_FILMS};
     }
@@ -35,7 +35,10 @@ function MoviesCardList({
 
   const resize = useCallback(() => {
     const windowSize = window.innerWidth;
-    setAddCards(getCards(windowSize));
+    console.log('windowSize ' + windowSize)
+    // console.log(setAddCards(getCards(windowSize)))
+    // setAddCards(getCards(windowSize));
+    getCards(windowSize)
   }, []);
 
   useEffect(() => {
@@ -48,21 +51,25 @@ function MoviesCardList({
 
   useEffect(() => {
     const windowSize = window.innerWidth;
+    console.log(setAddCards(getCards(windowSize).extra))
     setAddCards(getCards(windowSize).extra);
     const count = Math.min(movies.length, getCards(windowSize).first);
     setMoviesToShow(movies.slice(0, count));
     setCurrentCards(count);
   }, [movies]);
 
-  useEffect(() => {
-    if ((currentCards > movies.length) || (currentCards === movies.length)) {
-      setHiddenButton(true);
-    }
-  }, [currentCards]);
+  // useEffect(() => {
+  //   if ((currentCards > movies.length) || (currentCards === movies.length)) {
+  //     setHiddenButton(true);
+  //   }
+  // }, [currentCards]);
 
-  const renderMovies = useCallback(() => {
-    renderAddCards();
-  }, [renderAddCards]);
+  // const renderMovies = useCallback(() => {
+  //   renderAddCards();
+  // }, [renderAddCards]);
+
+  // console.log('movies' + movies.length);
+  console.log('addCards' + addCards);
 
   return (
     <>
@@ -90,8 +97,8 @@ function MoviesCardList({
       </section>
       <div>
         {movies.length > addCards &&
-        (<Still onClick={renderMovies}
-                hiddingButton={hiddenButton}
+        (<Still onClick={renderAddCards}
+          // hiddingButton={hiddenButton}
         />)
         }
       </div>

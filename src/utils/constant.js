@@ -10,3 +10,4 @@ export const MOBILE_SIZE = 480;
 
 export const SHOW_FILMS = 7;
 export const DURATION_FILMS = 60;
+export const SHORT_FILMS = 40;
