@@ -9,7 +9,7 @@ function Header({isLoading}) {
   // console.log(isLoading);
   return (
     <>
-      {!isLoading ?
+      {isLoading ?
         (<header className="header">
           <a href='/' className='header__logo-link'>
             <img src={logo} alt="логотип" className='logo'/>

@@ -17,6 +17,7 @@ function MoviesCardList({
   const [addCards, setAddCards] = useState(SHOW_FILMS);
   const [moviesToShow, setMoviesToShow] = useState([]);
   // const [hiddenButton, setHiddenButton] = useState(false);
+
   const getCards = (windowSize) => {
     console.log('getCards')
     if (windowSize > MOBILE_SIZE) {

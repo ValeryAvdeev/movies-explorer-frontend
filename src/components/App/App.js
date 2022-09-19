@@ -43,17 +43,17 @@ function App() {
         .getToken(token)
         .then((res) => {
           setCurrentUser(prev => {
-            setIsLoading(true);
+            // setIsLoading(true);
             return {...prev, ...res.data, isLoggedIn: true}
           });
           // navigation(-1);
         })
         .catch((err) => console.log(err))
+        // .finally();
         .finally(setIsLoading(true));
+    } else {
+      setIsLoading(true)
     }
-    // else {
-    //   setIsLoading(true)
-    // }
   }, []);
 
   useEffect(() => {
@@ -114,7 +114,7 @@ function App() {
       .then((data) => {
         mainApi.getToken(data.token).then((res) => {
           if (res) {
-            setIsLoading(true);
+            // setIsLoading(true);
             setCurrentUser(prev => {
               return {...prev, ...res, isLoggedIn: true, password, email};
             });
@@ -152,7 +152,7 @@ function App() {
   }
 
   const handleSearchMovies = (name) => {
-    setIsLoading(true);
+    // setIsLoading(true);
     const newMovies = searchMovies(allMovies, name);
     setMovies(newMovies);
     localStorage.setItem("filteredMovies", JSON.stringify(newMovies));
@@ -203,7 +203,7 @@ function App() {
     localStorage.removeItem("savedMovies");
     localStorage.removeItem("loadedMovies");
     localStorage.removeItem("jwt");
-    setIsLoading(false);
+    // setIsLoading(false);
     setAllMovies([]);
     setMovies([]);
     setSavedMovies([]);
@@ -215,6 +215,12 @@ function App() {
     setLoginleInfoMessage("");
     navigation("/");
   };
+
+  if (!isLoading) {
+    return (<>
+      <h1>Я блядский лоадер</h1>
+    </>)
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
