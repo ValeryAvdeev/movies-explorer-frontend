@@ -19,7 +19,6 @@ function MoviesCardList({
   // const [hiddenButton, setHiddenButton] = useState(false);
 
   const getCards = (windowSize) => {
-    console.log('getCards')
     if (windowSize > MOBILE_SIZE) {
       return {first: SHOW_FILMS, extra: SHOW_FILMS};
     }
@@ -36,8 +35,6 @@ function MoviesCardList({
 
   const resize = useCallback(() => {
     const windowSize = window.innerWidth;
-    console.log('windowSize ' + windowSize)
-    // console.log(setAddCards(getCards(windowSize)))
     // setAddCards(getCards(windowSize));
     getCards(windowSize)
   }, []);
@@ -51,8 +48,8 @@ function MoviesCardList({
   }, [resize]);
 
   useEffect(() => {
+    // clickCount * cardsCount
     const windowSize = window.innerWidth;
-    console.log(setAddCards(getCards(windowSize).extra))
     setAddCards(getCards(windowSize).extra);
     const count = Math.min(movies.length, getCards(windowSize).first);
     setMoviesToShow(movies.slice(0, count));
@@ -69,8 +66,6 @@ function MoviesCardList({
   //   renderAddCards();
   // }, [renderAddCards]);
 
-  // console.log('movies' + movies.length);
-  console.log('addCards' + addCards);
 
   return (
     <>

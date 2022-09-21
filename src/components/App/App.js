@@ -38,18 +38,19 @@ function App() {
   const [loginInfoMessage, setLoginleInfoMessage] = useState("");
 
   useEffect(() => {
+    console.log(token);
     if (token) {
       mainApi
         .getToken(token)
         .then((res) => {
           setCurrentUser(prev => {
-            setIsLoading(true);
-            return {...prev, ...res.data, isLoggedIn: true}
+            // console.log({...prev, ...res.data, isLoggedIn: true, isLoading: isLoading});
+            return {...prev, ...res.data, isLoggedIn: true};
           });
           // navigation(-1);
         })
         .catch((err) => console.log(err))
-        .finally(setIsLoading(true));
+        .finally(() => setIsLoading(true));
       // } else {
       //   setIsLoading(true)
     }
@@ -151,7 +152,7 @@ function App() {
   }
 
   const handleSearchMovies = (name) => {
-    setIsLoading(true);
+    // setIsLoading(true);
     const newMovies = searchMovies(allMovies, name);
     setMovies(newMovies);
     localStorage.setItem("filteredMovies", JSON.stringify(newMovies));
@@ -216,7 +217,7 @@ function App() {
   };
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={{...currentUser, isLoading: isLoading}}>
       <div className="App">
         <div className="App__content">
           <Routes>
