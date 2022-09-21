@@ -3,13 +3,10 @@ import logo from '../../images/logo.svg';
 import {Link} from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 
-// import {CurrentUserContext} from "../../contexts/CurrentUserContext";
-
 function Header({isLoading}) {
-  // console.log(isLoading);
   return (
     <>
-      {isLoading ?
+      {!isLoading ?
         (<header className="header">
           <a href='/' className='header__logo-link'>
             <img src={logo} alt="логотип" className='logo'/>
