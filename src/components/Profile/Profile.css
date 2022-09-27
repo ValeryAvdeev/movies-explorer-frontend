@@ -77,6 +77,21 @@
   cursor: pointer;
 }
 
+.profile__button_disabled {
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #202020;
+  opacity: .2;
+  border: none;
+  cursor: default;
+}
+
 .profile__link {
   font-family: "Inter", "Arial", sans-serif;
   font-style: normal;

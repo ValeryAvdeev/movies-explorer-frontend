@@ -1,39 +1,68 @@
 import './MoviesCard.css';
-import foto from '../../images/street.png';
-import {useState} from "react";
+// import foto from '../../images/street.png';
+// import {useState, useEffect} from "react";
 import {useLocation} from "react-router-dom";
+import {MOVIES, DURATION_FILMS} from '../../utils/constant';
 
-function MoviesCard() {
-  const [saveButton, setSaveButton] = useState(false);
+function MoviesCard({
+                      movie,
+                      onSave,
+                      onDelete,
+                      savedMovies
+                    }) {
+
   const location = useLocation();
+  let hours = Math.floor(movie.duration / DURATION_FILMS)
+  let minutes = Math.floor(movie.duration - hours * DURATION_FILMS)
+    .toString()
+    .padStart(2, "0");
 
-  function handleSaveToogle() {
-    setSaveButton(!saveButton)
+  const isSaved = savedMovies.some((i) => i.movieId === movie.id);
+
+  function handleSaveClick() {
+    if (isSaved) {
+      onDelete(savedMovies.filter((i) => i.movieId === movie.id)[0]);
+    } else {
+      onSave(movie);
+    }
+  }
+
+  function handleDeleteMovie() {
+    onDelete(movie);
   }
 
   return (
     <div className="movie">
       <div className="movie__content">
         <h3 className="movie__title">
-          33 слова о дизайне
+          {movie.nameRU}
         </h3>
-        <p className="movie__timeng">1ч 47м</p>
-        <button
-          type="button"
-          className={
-            `movie__save movie__save${
-              location.pathname == '/saved-movies' ? '_delete' :
-                saveButton ? '_active' : '_disaible'
-            }`
+        <p className="movie__timeng">{`${hours}ч ${minutes}м`}</p>
+        <div>
+          {location.pathname === '/movies' ?
+            <button type="button"
+                    className={
+                      `movie__save movie__save${isSaved ? '_active' : '_disaible'}`
+                    }
+                    onClick={handleSaveClick}
+            /> :
+            <button type="button"
+                    className='movie__save movie__save_delete'
+                    onClick={handleDeleteMovie}
+            />
           }
-          onClick={handleSaveToogle}
-        />
+        </div>
       </div>
-      <img
-        src={foto}
-        className="movie__image"
-        alt='имя из заголовка'
-      />
+      <a className="movie__trailerLink"
+         href={movie.trailerLink}
+         target='_blank'
+         rel="noreferrer"
+      >
+        <img src={location.pathname === '/movies' ? `${MOVIES}${movie.image.url}` : `${movie.image}`}
+             className="movie__image"
+             alt={movie.nameRU}
+        />
+      </a>
     </div>
   )
 }
